@@ -1,5 +1,4 @@
 # store
-store
 SpringBoot创建的SSM框架的商城
 具有：
 1.用户登录
