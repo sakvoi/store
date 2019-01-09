@@ -159,7 +159,8 @@
 						</div>
 						<div>
 							<label for="recipient-name" class="control-label">产品描述:</label>
-							<input type="text" class="form-control" v-model="product.descs" id="" placeholder="产品描述">
+							<!-- <input type="text" class="form-control" v-model="product.descs" id="" placeholder="产品描述"> -->
+							<textarea style="resize:none" rows="5" class="form-control">{{product.descs}} </textarea>
 						</div>
 						<div>
 							<label for="recipient-name" class="control-label">所属类型:</label>

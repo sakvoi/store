@@ -30,7 +30,7 @@ public class ProductController {
 	public List<TbProduct> findAll(){	
 		List<TbProduct> products = productService.findAll();
 		for (TbProduct product : products) {
-			product.setImage("../product/" + product.getImage());
+			product.setImage("../product/images/" + product.getImage());
 		}
 		return products;
 	}
