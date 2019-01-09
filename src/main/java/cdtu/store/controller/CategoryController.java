@@ -111,4 +111,9 @@ public class CategoryController {
 		return categoryService.findPage(category, page, rows);		
 	}
 	
+	@RequestMapping("/findByName")
+	public TbCategory findByName(String cname) {
+		return categoryService.findByName(cname);
+	}
+	
 }

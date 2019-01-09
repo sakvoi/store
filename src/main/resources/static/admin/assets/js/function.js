@@ -226,6 +226,29 @@ var categorysecond = new Vue({
 		category : null
 	},
 	methods:{
+		update:function(){
+			var cname = $("#cnameEdit").val();
+			this.$http.get('/category/findByName?cname='+cname).then(function(res){
+				this.$http.post('/categorysecond/update',{csid:this.csecondEdit.csid,csname:this.csecondEdit.csname,cid:res.body.cid}).then(function(res){
+					if(res.body.success){
+						alert("修改成功！");
+						location.href="categorySecond.html";
+					}else{
+						alert("修改失败！");
+						location.href="categorySecond.html";
+					}
+				},function(){
+					console.log('请求失败处理');
+				});
+			},function(){
+				console.log('请求失败处理');
+			});
+			this.$http.get('/category/findAll').then(function(res){
+				this.category=res.body
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
 		del:function(id){
 			var ids = [];
 			ids = id

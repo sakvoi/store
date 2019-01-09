@@ -57,5 +57,7 @@ public interface CategoryService {
 	 * @return
 	 */
 	public PageResult findPage(TbCategory category, int pageNum,int pageSize);
+
+	TbCategory findByName(String cname);
 	
 }

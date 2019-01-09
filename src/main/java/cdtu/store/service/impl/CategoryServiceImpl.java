@@ -80,8 +80,12 @@ public class CategoryServiceImpl implements CategoryService {
 		}		
 	}
 	
+	@Override
+	public TbCategory findByName(String cname) {
+		return categoryMapper.selectByName(cname);
+	}
 	
-		@Override
+	@Override
 	public PageResult findPage(TbCategory category, int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		
@@ -89,14 +93,13 @@ public class CategoryServiceImpl implements CategoryService {
 		Criteria criteria = example.createCriteria();
 		
 		if(category!=null){			
-						if(category.getCname()!=null && category.getCname().length()>0){
+			if(category.getCname()!=null && category.getCname().length()>0){
 				criteria.andCnameLike("%"+category.getCname()+"%");
 			}
-	
 		}
 		
 		Page<TbCategory> page= (Page<TbCategory>)categoryMapper.selectByExample(example);		
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
 }

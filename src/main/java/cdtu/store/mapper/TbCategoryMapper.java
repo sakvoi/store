@@ -19,7 +19,7 @@ public interface TbCategoryMapper {
     List<TbCategory> selectByExample(TbCategoryExample example);
 
     TbCategory selectByPrimaryKey(Integer cid);
-
+    
     int updateByExampleSelective(@Param("record") TbCategory record, @Param("example") TbCategoryExample example);
 
     int updateByExample(@Param("record") TbCategory record, @Param("example") TbCategoryExample example);
@@ -27,4 +27,6 @@ public interface TbCategoryMapper {
     int updateByPrimaryKeySelective(TbCategory record);
 
     int updateByPrimaryKey(TbCategory record);
+
+	TbCategory selectByName(String cname);
 }

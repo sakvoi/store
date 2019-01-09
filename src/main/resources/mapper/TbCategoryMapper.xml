@@ -86,6 +86,12 @@
     from tb_category
     where cid = #{cid,jdbcType=INTEGER}
   </select>
+  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_category
+    where cname = #{cname,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tb_category
     where cid = #{cid,jdbcType=INTEGER}
