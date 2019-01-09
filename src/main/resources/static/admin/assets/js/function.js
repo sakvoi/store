@@ -1,9 +1,8 @@
 var customer = new Vue({
 	el:'#customerList',
 	data:{
-		customers:null,
-		cEditName:null,
-		cEditId:null
+		customers : null,
+		user : []
 	},
 	methods:{
 		del:function(id){
@@ -22,16 +21,15 @@ var customer = new Vue({
 			});
 		},
 		findAll:function(){
-			this.$http.post('/customer/findAll').then(function(res){
-				this.customers=res.body
+			this.$http.get('/customer/findAll').then(function(res){
+				this.customers = res.body
 			},function(){
 				console.log('请求失败处理');
 			});
 		},
 		findOne:function(uid){
-			this.$http.post('/customer/findOne?id='+uid).then(function(res){
-				this.cEditName=res.body.username
-				this.cEditId=res.body.idcard
+			this.$http.get('/customer/findOne?id='+uid).then(function(res){
+				this.user=res.body
 			},function(){
 				console.log('请求失败处理');
 			});
@@ -44,13 +42,13 @@ var customer = new Vue({
 var sellerList = new Vue({
 	el:'#sellerList',
 	data:{
-		sellers:null,
-		sEditName:null
+		sellers : null,
+		sel : []
 	},
 	methods:{
 		del:function(id){
-			var ids=[];
-			ids=id
+			var ids = [];
+			ids = id
 			this.$http.post('/seller/delete?ids='+ids).then(function(res){
 				if(res.body.success){
 					alert("删除成功！");
@@ -64,15 +62,15 @@ var sellerList = new Vue({
 			});
 		},
 		findAll:function(){
-			this.$http.post('/seller/findAll').then(function(res){
-				this.sellers=res.body
+			this.$http.get('/seller/findAll').then(function(res){
+				this.sellers = res.body
 			},function(){
 				console.log('请求失败处理');
 			});
 		},
 		findOne:function(sid){
-			this.$http.post('/seller/findOne?id='+sid).then(function(res){
-				this.sEditName=res.body.username
+			this.$http.get('/seller/findOne?id='+sid).then(function(res){
+				this.sel = res.body
 			},function(){
 				console.log('请求失败处理');
 			});
@@ -85,9 +83,8 @@ var sellerList = new Vue({
 var category = new Vue({
 	el:'#category',
 	data:{
-		categorys:null,
-		cEditName:null,
-		cEditId:null
+		categorys : null,
+		cEdit : []
 	},
 	methods:{
 		add:function(){
@@ -131,16 +128,15 @@ var category = new Vue({
 			});
 		},
 		findAll:function(){
-			this.$http.post('/category/findAll').then(function(res){
+			this.$http.get('/category/findAll').then(function(res){
 				this.categorys=res.body
 			},function(){
 				console.log('请求失败处理');
 			});
 		},
 		findOne:function(cid){
-			this.$http.post('/category/findOne?id='+cid).then(function(res){
-				this.cEditName=res.body.cname,
-				this.cEditId=res.body.cid
+			this.$http.get('/category/findOne?id='+cid).then(function(res){
+				this.cEdit = res.body
 			},function(){
 				console.log('请求失败处理');
 			});
@@ -153,14 +149,14 @@ var category = new Vue({
 var categorysecond = new Vue({
 	el:'#categorysecond',
 	data:{
-		categoryseconds: null,
-		csecondEditName:null,
-		category:null
+		categoryseconds :  null,
+		csecondEdit : [],
+		category : null
 	},
 	methods:{
 		del:function(id){
-			var ids=[];
-			ids=id
+			var ids = [];
+			ids = id
 			this.$http.post('/categorysecond/delete?ids='+ids).then(function(res){
 				if(res.body.success){
 					alert("删除成功！");
@@ -174,15 +170,15 @@ var categorysecond = new Vue({
 			});
 		},
 		findAll:function(){
-			this.$http.post('/categorysecond/findAll').then(function(res){
+			this.$http.get('/categorysecond/findAll').then(function(res){
 				this.categoryseconds=res.body
 			},function(){
 				console.log('请求失败处理');
 			});
 		},
 		findOne:function(csid){
-			this.$http.post('/categorysecond/findOne?id='+csid).then(function(res){
-				this.csecondEditName=res.body.csname
+			this.$http.get('/categorysecond/findOne?id='+csid).then(function(res){
+				this.csecondEdit=res.body
 			},function(){
 				console.log('请求失败处理');
 			});

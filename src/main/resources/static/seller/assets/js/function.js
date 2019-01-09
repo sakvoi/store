@@ -1,62 +1,34 @@
-var customer = new Vue({
-	el:'#customerList',
+var productManage = new Vue({
+	el: '#productManage',
 	data:{
-		customers:null,
-		cEditName:null,
-		cEditId:null
+		products : null,
+		categoryseconds : null,
+		product : []
 	},
 	methods:{
 		findAll:function(){
-			this.$http.post('/customer/findAll').then(function(res){
-				this.customers=res.body
+			this.$http.get('/product/findAll').then(function(res){
+				this.products = res.body
 			},function(){
 				console.log('请求失败处理');
 			});
 		},
-		findOne:function(uid){
-			this.$http.post('/customer/findOne?id='+uid).then(function(res){
-				this.cEditName=res.body.username
-				this.cEditId=res.body.idcard
+		findOne:function(product){
+			this.$http.get('/product/findOne?id='+product.pid).then(function(res){
+				this.product = res.body
 			},function(){
 				console.log('请求失败处理');
 			});
 		}
 	},
 	mounted:function(){
-        this.findAll();
-    }
-});
-var sellerList = new Vue({
-	el:'#sellerList',
-	data:{
-		sellers:null,
-		sEditName:null
-	},
-	methods:{
-		findAll:function(){
-			this.$http.post('/seller/findAll').then(function(res){
-				this.sellers=res.body
-			},function(){
-				console.log('请求失败处理');
-			});
-		},
-		findOne:function(sid){
-			this.$http.post('/seller/findOne?id='+sid).then(function(res){
-				this.sEditName=res.body.username
-			},function(){
-				console.log('请求失败处理');
-			});
-		}
-	},
-	mounted:function(){
-        this.findAll();
-    }
+		this.findAll();
+	}
 });
 var category = new Vue({
 	el:'#category',
 	data:{
 		categorys:null,
-		cEditName:null
 	},
 	methods:{
 		del:function(id){
@@ -83,7 +55,7 @@ var category = new Vue({
 		},
 		findOne:function(cid){
 			this.$http.post('/category/findOne?id='+cid).then(function(res){
-				this.cEditName=res.body.cname
+				
 			},function(){
 				console.log('请求失败处理');
 			});
@@ -97,7 +69,6 @@ var categorysecond = new Vue({
 	el:'#categorysecond',
 	data:{
 		categoryseconds: null,
-		csecondEditName:null,
 		category:null
 	},
 	methods:{
@@ -125,7 +96,7 @@ var categorysecond = new Vue({
 		},
 		findOne:function(csid){
 			this.$http.post('/categorysecond/findOne?id='+csid).then(function(res){
-				this.csecondEditName=res.body.csname
+				
 			},function(){
 				console.log('请求失败处理');
 			});

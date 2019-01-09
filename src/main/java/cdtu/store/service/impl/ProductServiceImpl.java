@@ -95,8 +95,8 @@ public class ProductServiceImpl implements ProductService {
 			if(product.getImage()!=null && product.getImage().length()>0){
 				criteria.andImageLike("%"+product.getImage()+"%");
 			}
-			if(product.getDesc()!=null && product.getDesc().length()>0){
-				criteria.andDescLike("%"+product.getDesc()+"%");
+			if(product.getDescs()!=null && product.getDescs().length()>0){
+				criteria.andDescsLike("%"+product.getDescs()+"%");
 			}
 			if(product.getPcode()!=null && product.getPcode().length()>0){
 				criteria.andPcodeLike("%"+product.getPcode()+"%");

@@ -7,7 +7,7 @@
     <result column="marketprice" property="marketprice" jdbcType="DOUBLE" />
     <result column="storeprice" property="storeprice" jdbcType="DOUBLE" />
     <result column="image" property="image" jdbcType="VARCHAR" />
-    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="descs" property="descs" jdbcType="VARCHAR" />
     <result column="pdate" property="pdate" jdbcType="TIMESTAMP" />
     <result column="pcode" property="pcode" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="CHAR" />
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    pid, pname, marketprice, storeprice, image, desc, pdate, pcode, status, csid, sid
+    pid, pname, marketprice, storeprice, image, descs, pdate, pcode, status, csid, sid
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cdtu.store.pojo.TbProductExample" >
     select
@@ -107,11 +107,11 @@
   </delete>
   <insert id="insert" parameterType="cdtu.store.pojo.TbProduct" >
     insert into tb_product (pid, pname, marketprice, 
-      storeprice, image, desc, 
+      storeprice, image, descs, 
       pdate, pcode, status, 
       csid, sid)
     values (#{pid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, #{marketprice,jdbcType=DOUBLE}, 
-      #{storeprice,jdbcType=DOUBLE}, #{image,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, 
+      #{storeprice,jdbcType=DOUBLE}, #{image,jdbcType=VARCHAR}, #{descs,jdbcType=VARCHAR}, 
       #{pdate,jdbcType=TIMESTAMP}, #{pcode,jdbcType=VARCHAR}, #{status,jdbcType=CHAR}, 
       #{csid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER})
   </insert>
@@ -133,8 +133,8 @@
       <if test="image != null" >
         image,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="descs != null" >
+        descs,
       </if>
       <if test="pdate != null" >
         pdate,
@@ -168,8 +168,8 @@
       <if test="image != null" >
         #{image,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=VARCHAR},
+      <if test="descs != null" >
+        #{descs,jdbcType=VARCHAR},
       </if>
       <if test="pdate != null" >
         #{pdate,jdbcType=TIMESTAMP},
@@ -213,7 +213,7 @@
         image = #{record.image,jdbcType=VARCHAR},
       </if>
       <if test="record.desc != null" >
-        desc = #{record.desc,jdbcType=VARCHAR},
+        descs = #{record.descs,jdbcType=VARCHAR},
       </if>
       <if test="record.pdate != null" >
         pdate = #{record.pdate,jdbcType=TIMESTAMP},
@@ -242,7 +242,7 @@
       marketprice = #{record.marketprice,jdbcType=DOUBLE},
       storeprice = #{record.storeprice,jdbcType=DOUBLE},
       image = #{record.image,jdbcType=VARCHAR},
-      desc = #{record.desc,jdbcType=VARCHAR},
+      descs = #{record.descs,jdbcType=VARCHAR},
       pdate = #{record.pdate,jdbcType=TIMESTAMP},
       pcode = #{record.pcode,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=CHAR},
@@ -268,7 +268,7 @@
         image = #{image,jdbcType=VARCHAR},
       </if>
       <if test="desc != null" >
-        desc = #{desc,jdbcType=VARCHAR},
+        descs = #{descs,jdbcType=VARCHAR},
       </if>
       <if test="pdate != null" >
         pdate = #{pdate,jdbcType=TIMESTAMP},
@@ -294,7 +294,7 @@
       marketprice = #{marketprice,jdbcType=DOUBLE},
       storeprice = #{storeprice,jdbcType=DOUBLE},
       image = #{image,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR},
+      descs = #{descs,jdbcType=VARCHAR},
       pdate = #{pdate,jdbcType=TIMESTAMP},
       pcode = #{pcode,jdbcType=VARCHAR},
       status = #{status,jdbcType=CHAR},

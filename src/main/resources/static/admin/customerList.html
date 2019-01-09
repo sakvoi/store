@@ -12,8 +12,6 @@
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href="assets/css/demo.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
@@ -114,19 +112,18 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h3 class="modal-title" id="modal-register-label">编辑</h3>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body" id="editModel">
 							<div>
 								<label for="recipient-name" class="control-label">用户名:</label>
-								<input type="text" class="form-control" v-model="cEditName" id="name" placeholder="用户名">
+								<input type="text" class="form-control" v-model="user.username" id="name" placeholder="用户名">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">真实姓名:</label>
-								<input type="text" class="form-control" v-model="cEditName" id="name" placeholder="真实姓名">
+								<input type="text" class="form-control" v-model="user.realname" id="name" placeholder="真实姓名">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">性别:</label>
@@ -139,27 +136,27 @@
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">出生日期:</label>
-								<input type="date" class="input-append date" id="name" placeholder="出生日期">
+								<input type="date" class="input-append date" id="birth" placeholder="出生日期">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">身份证号:</label>
-								<input type="text" class="form-control" v-model="cEditId" id="name" placeholder="身份证号">
+								<input type="text" class="form-control" v-model="user.idcard" id="idcard" placeholder="身份证号">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">邮箱:</label>
-								<input type="text" class="form-control" v-model="cEditId" id="name" placeholder="邮箱">
+								<input type="text" class="form-control" v-model="user.email" id="email" placeholder="邮箱">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">联系电话:</label>
-								<input type="text" class="form-control" v-model="cEditId" id="name" placeholder="联系电话">
+								<input type="text" class="form-control" v-model="user.tel" id="name" placeholder="联系电话">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">地址:</label>
-								<input type="text" class="form-control" v-model="cEditId" id="name" placeholder="地址">
+								<input type="text" class="form-control" v-model="user.address" id="address" placeholder="地址">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">邮编:</label>
-								<input type="text" class="form-control" v-model="cEditId" id="name" placeholder="邮编">
+								<input type="text" class="form-control" v-model="user.code" id="code" placeholder="邮编">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">账号状态:</label>

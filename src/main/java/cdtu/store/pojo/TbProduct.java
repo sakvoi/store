@@ -13,7 +13,7 @@ public class TbProduct {
 
     private String image;
 
-    private String desc;
+    private String descs;
 
     private Date pdate;
 
@@ -65,12 +65,12 @@ public class TbProduct {
         this.image = image == null ? null : image.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescs() {
+        return descs;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDescs(String desc) {
+        this.descs = desc == null ? null : desc.trim();
     }
 
     public Date getPdate() {

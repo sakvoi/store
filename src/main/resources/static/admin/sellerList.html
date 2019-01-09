@@ -12,8 +12,6 @@
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href="assets/css/demo.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
@@ -112,8 +110,7 @@
 		<!-- END LEFT SIDEBAR -->
 		<div id="sellerList">
 		<!-- edit -->
-			<div class="modal fade" id="edit" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel">
+			<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -126,19 +123,19 @@
 						<div class="modal-body" id="editModel">
 							<div>
 								<label for="recipient-name" class="control-label">姓名:</label>
-								<input type="text" class="form-control" v-model="sEditName" id="name" placeholder="Name">
+								<input type="text" class="form-control" v-model="sel.username" id="name" placeholder="Name">
 							</div>
 							<div>
-								<label for="recipient-name" class="control-label">公司名称</label>
-                           		<input type="text" class="form-control"  placeholder="公司名称" >
+								<label for="recipient-name" class="control-label">商铺名称</label>
+                           		<input type="text" class="form-control" v-model="sel.company" placeholder="公司名称" >
       						</div>
       						<div>
 								<label for="recipient-name" class="control-label">工商注册号</label>
-                           		<input type="text" class="form-control" placeholder="工商注册号" >
+                           		<input type="text" class="form-control" v-model="sel.license" placeholder="工商注册号" >
       						</div>
       						<div>
 								<label for="recipient-name" class="control-label">经营范围</label>
-                           		<input type="text" class="form-control" placeholder="经营范围" >
+                           		<input type="text" class="form-control" v-model="sel.scope" placeholder="经营范围" >
       						</div>
 						</div>
 						<div class="modal-footer">

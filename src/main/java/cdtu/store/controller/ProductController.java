@@ -27,10 +27,13 @@ public class ProductController {
 	 * @return
 	 */
 	@RequestMapping("/findAll")
-	public List<TbProduct> findAll(){			
-		return productService.findAll();
+	public List<TbProduct> findAll(){	
+		List<TbProduct> products = productService.findAll();
+		for (TbProduct product : products) {
+			product.setImage("../product/" + product.getImage());
+		}
+		return products;
 	}
-	
 	
 	/**
 	 * 返回全部列表

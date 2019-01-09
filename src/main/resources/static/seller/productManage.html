@@ -25,6 +25,7 @@
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script src="assets/js/vue.min.js"></script>
+	<script src="assets/js/vue-resource.min.js"></script>
 </head>
 
 <body>
@@ -146,23 +147,23 @@
 					<div class="modal-body">
 						<div>
 							<label for="recipient-name" class="control-label">名称:</label>
-							<input type="text" class="form-control" v-model="cEditName" id="name" placeholder="名称">
+							<input type="text" class="form-control" v-model="product.pname" id="" placeholder="名称">
 						</div>
 						<div>
-							<label for="recipient-name" class="control-label">价格:</label>
-							<input type="text" class="form-control" v-model="cEditName" id="name" placeholder="价格">
+							<label for="recipient-name" class="control-label">市场价格:</label>
+							<input type="text" class="form-control" v-model="product.marketprice" id="" placeholder="价格">
 						</div>
 						<div>
-							<label for="recipient-name" class="control-label">名称:</label>
-							<input type="text" class="form-control" v-model="cEditName" id="name" placeholder="名称">
+							<label for="recipient-name" class="control-label">商城价格:</label>
+							<input type="text" class="form-control" v-model="product.storeprice" id="" placeholder="名称">
 						</div>
 						<div>
 							<label for="recipient-name" class="control-label">产品描述:</label>
-							<input type="text" class="form-control" v-model="cEditName" id="name" placeholder="产品描述">
+							<input type="text" class="form-control" v-model="product.descs" id="" placeholder="产品描述">
 						</div>
 						<div>
 							<label for="recipient-name" class="control-label">所属类型:</label>
-							<input type="text" class="form-control" v-model="cEditName" id="name" placeholder="所属类型">
+							<input type="text" class="form-control" id="" placeholder="所属类型">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -176,7 +177,7 @@
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
-			<div class="main-content">
+			<div class="main-content" id="productManage">
 				<div class="form-group">
 					<button type="button" data-toggle="modal" data-target="#add" class="btn btn-success">添加</button>
 				</div>
@@ -185,13 +186,21 @@
 						<tr>
 							<th>#</th>
 							<th>名称</th>
+							<th>价格</th>
+							<th>图片</th>
+							<th>产品描述</th>
+							<th>所属类型</th>
 							<th>操作</th>
 						</tr>
-						<tr v-for="(csecond,index) in categoryseconds">
+						<tr v-for="(product,index) in products">
 							<td>{{index+1}}</td>
-							<td>{{csecond.csname}}</td>
+							<td>{{product.pname}}</td>
+							<td>{{product.storeprice}}</td>
+							<td><img style="width:150px" v-bind:src="product.image"></td>
+							<td>{{product.descs}}</td>
+							<td>{{product.csid}}</td>
 							<td>
-								<button data-toggle="modal" data-target="#edit" v-on:click="findOne(csecond.csid)" type="button" class="btn btn-primary">编辑</button>
+								<button data-toggle="modal" data-target="#edit" v-on:click="findOne(product)" type="button" class="btn btn-primary">编辑</button>
 								<button type="button" v-on:click="del(csecond.csid)" class="btn btn-danger">删除</button>
 							</td>
 						</tr>
@@ -210,5 +219,6 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
+	<script src="assets/js/function.js"></script>
 </body>
 </html>
