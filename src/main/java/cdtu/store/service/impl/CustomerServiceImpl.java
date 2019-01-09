@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -130,10 +131,11 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public Result login(String username, String password) {
+		String pwd = DigestUtils.md5DigestAsHex(password.getBytes());
 		TbCustomerExample customerExample = new TbCustomerExample();
 		Criteria criteria = customerExample.createCriteria();
 		criteria.andUsernameEqualTo(username);
-		criteria.andPasswordEqualTo(password);
+		criteria.andPasswordEqualTo(pwd);
 		List<TbCustomer> list = customerMapper.selectByExample(customerExample);
 		if (list.size() > 0) {
 			return new Result(true, "登录成功");
@@ -147,6 +149,8 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public void register(TbCustomer customer) {
+		String password = DigestUtils.md5DigestAsHex(customer.getPassword().getBytes());
+		customer.setPassword(password);
 		customerMapper.insertSelective(customer);
 	}
 

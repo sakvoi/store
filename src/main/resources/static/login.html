@@ -10,6 +10,8 @@
 <link rel="icon" sizes="76x76" href="img/icon.png">
 <link rel="icon" type="image/png" sizes="96x96" href="img/micon.png">
 <script src="js/jquery.min.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.min.js"></script>
 <script>
 	var __links = document.querySelectorAll('a');
 	function __linkClick(e) {
@@ -21,38 +23,9 @@
 		}
 	}
 </script>
-<script>
-	function login() {
-		var username = $("#username").val()
-		var password = $("#password").val()
-		$.ajax({
-			data : {
-				username : username,
-				password : password
-			},
-			dataType : "JSON",
-			isAsync : false,
-			isCache : true,
-			method : "POST",
-			url : "customer/login",
-			complete : function(rst) {
-				var result = JSON.parse(rst.responseText);
-				if (result.success) {
-					alert("登录成功");
-					location.href = "index.html"
-				} else {
-					alert("用户名或密码错误");
-					location.href = "login.html"
-				}
-			}
-		})
-		return false;
-	}
-</script>
 </head>
 <body>
 	<!-- contact-form -->
-
 	<div class="message warning">
 		<div class="inset">
 			<a href="index.html"><img src="img/logo.png" /></a>
@@ -60,19 +33,17 @@
 				<h1>登录</h1>
 				<!-- <div class="alert-close"> </div> -->
 			</div>
-			<div class="form">
-				<li><input type="text" id="username" name="username"
-					class="text" value="Username" onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Username';}"><a
-					href="#" class=" icon user"></a></li>
+			<div class="form" id="login">
+				<li>
+					<input type="text" id="username" placeholder="UserName" v-model="username" class="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'UserName';}">
+					<a href="#" class=" icon user"></a>
+				</li>
 				<div class="clear"></div>
-				<li><input type="password" id="password" name="password"
-					value="Password" onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Password';}">
+				<li><input type="password" id="password" placeholder="Password" v-model="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 					<a href="#" class="icon lock"></a></li>
 				<div class="clear"></div>
 				<div class="submit">
-					<input type="submit" onclick="login()" value="Sign in">
+					<input type="submit" v-on:click="login()" value="Sign in">
 					<h4>
 						<a href="/forget.html">忘记密码 ?</a>
 					</h4>
@@ -88,5 +59,6 @@
 			<font color="black">Copyright &copy; 2019</font>
 		</p>
 	</div>
+	<script src="js/function.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh">
 <head>
-<title>修改密码</title>
+<title>个人信息</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -37,11 +37,11 @@
 		isAsync : false,
 		isCache : true,
 		method : "GET",
-		url : "findOne",
+		url : "/seller/findOne",
 		complete : function(rst) {
 			var result = JSON.parse(rst.responseText)
 			var table = new Vue({
-				el : '#admin',
+				el : '#seller',
 				data : {
 					admin : result,
 				}
@@ -113,8 +113,8 @@
 								class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="setting" class="collapse in">
 								<ul class="nav">
-									<li><a href="info.html" class="">个人信息</a></li>
-									<li><a href="changePwd.html" class="active">修改密码</a></li>
+									<li><a href="info.html" class="active">个人信息</a></li>
+									<li><a href="changePwd.html" class="">修改密码</a></li>
 									<li><a href="javascript:void(0);" onclick=javascrtpt:logout() class="">退出登录</a></li>
 								</ul>
 							</div>
@@ -128,19 +128,27 @@
 		<div class="main">
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
-				<div class="form-group" id="admin">
+				<div class="form-group" id="seller">
 					<label>用户名</label>
 					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
-					<input style="width: 15%" type="text" id="username" class="form-control" v-model="admin.username" name="username" readonly unselectable="on">
+					<input style="width: 15%" type="text" class="form-control" v-model="seller.username" name="username" readonly unselectable="on">
 				</div>
-				<div class="form-group">
-					<label>原密码</label> <input style="width: 15%" type="password" id="password" name="password" class="form-control" placeholder="原密码">
+				<div class="form-group" id="admin">
+					<label>工商注册号</label>
+					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
+					<input style="width: 15%" type="text" class="form-control" v-model="seller.license">
 				</div>
-				<div class="form-group">
-					<label>新密码</label> <input style="width: 15%" type="password" id="newPwd" name="newpassword" class="form-control" placeholder="新密码">
+				<div class="form-group" id="admin">
+					<label>商铺名称</label>
+					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
+					<input style="width: 15%" type="text" class="form-control" v-model="seller.company">
 				</div>
-				<input onclick="changePwd()" type="submit" class="btn btn-primary" name="修改">&nbsp;&nbsp;&nbsp;&nbsp;
-				<input onclick="reset()" type="reset" class="btn btn-default" name="重置">
+				<div class="form-group" id="admin">
+					<label>经营范围</label>
+					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
+					<input style="width: 15%" type="text" class="form-control" v-model="seller.scope">
+				</div>
+				<input onclick="changePwd()" type="submit" class="btn btn-primary" name="修改">
 			</div>
 			<!-- END MAIN CONTENT -->
 		</div>
@@ -162,7 +170,7 @@
 			var username = $("#username").val()
 			var password = $("#password").val()
 			var newPwd = $("#newPwd").val()
-			var uid = $("#uid").val()
+			var uid = $("#sid").val()
 			$.ajax({
 				data : {
 					username : username,
@@ -178,7 +186,7 @@
 					if (result.success) {
 						$.ajax({
 							data : JSON.stringify({
-								"uid" : uid,
+								"sid" : uid,
 								"password" : newPwd
 							}),
 							contentType : "application/json;charset=UTF-8",

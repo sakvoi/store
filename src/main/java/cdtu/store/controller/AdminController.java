@@ -21,7 +21,6 @@ import cdtu.store.service.AdminService;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
-
 	@Autowired
 	private AdminService adminService;
 

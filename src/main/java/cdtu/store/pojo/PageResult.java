@@ -22,7 +22,5 @@ public class PageResult {
 		this.total = total;
 		this.rows = rows;
 	}
-	
-	
 
 }

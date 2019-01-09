@@ -1,14 +1,24 @@
-$.get("/category/findAll",function(data1,status1){
-	$.get("/categorysecond/findAll",function(data2,status2){
-		var table = new Vue({
-			el:'#flei',
-			data:{
-				categorys:data1,
-				categoryseconds:data2,
-			}
-		});
-	});
-	
+var login = new Vue({
+	el:'#login',
+	data:{
+		username:null,
+		password:null
+	},
+	methods:{
+		login:function(){
+			this.$http.get('/customer/login',{params:{username:this.username,password:this.password}},{emulateJSON: true}).then(function(res){
+				if (res.body.success) {
+					alert("登录成功");
+					location.href = "index.html"
+				} else {
+					alert("用户名或密码错误");
+					location.href = "login.html"
+				}
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	}
 });
 var topMenu = new Vue({
 	el:'#topMenu',
@@ -17,7 +27,7 @@ var topMenu = new Vue({
 	},
 	methods:{
 		findAll:function(){
-			this.$http.post('/category/findAll').then(function(res){
+			this.$http.get('/category/findAll').then(function(res){
 				this.categorys=res.body
 			},function(){
 				console.log('请求失败处理');
@@ -36,12 +46,12 @@ var init = new Vue({
 	},
 	methods:{
 		findAll:function(){
-			this.$http.post('/category/findAll').then(function(res){
+			this.$http.get('/category/findAll').then(function(res){
 				this.categorys=res.body
 			},function(){
 				console.log('请求失败处理');
 			});
-			this.$http.post('/categorysecond/findAll').then(function(res){
+			this.$http.get('/categorysecond/findAll').then(function(res){
 				this.categoryseconds=res.body
 			},function(){
 				console.log('请求失败处理');
@@ -52,31 +62,25 @@ var init = new Vue({
 		this.findAll();
 	}
 });
-function register() {
-	var username = $("#username").val()
-	var password = $("#password").val()
-	var email = $("#email").val()
-	$.ajax({
-		data : JSON.stringify({
-			"username" : username,
-			"password" : password,
-			"email" : email
-		}),
-		contentType : "application/json;charset=UTF-8",
-		dataType : "JSON",
-		isAsync : false,
-		isCache : true,
-		method : "POST",
-		url : "customer/register",
-		complete : function(rst) {
-			var result = JSON.parse(rst.responseText);
-			if (result.success) {
-				alert("注册成功");
-				location.href = "index.html"
-			} else {
-				alert("注册失败");
-			}
+var register = new Vue({
+	el:'#register',
+	data:{
+		username:null,
+		password:null,
+		email:null
+	},
+	methods:{
+		register:function(){
+			this.$http.post('/customer/register',{username:this.username,password:this.password,email:this.email}).then(function(res){
+				if (res.body.success) {
+					alert("注册成功");
+					location.href = "index.html"
+				} else {
+					alert("注册失败");
+				}
+			},function(){
+				console.log('请求失败处理');
+			});
 		}
-	})
-	return false;
-}
+	}
+});

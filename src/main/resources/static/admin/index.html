@@ -100,10 +100,6 @@
 								</ul>
 							</div>
 						</li>
-						<!-- <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>图标</span></a></li>
-						<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>通知</span></a></li>
-						<li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>表格</span></a></li>
-						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>图标</span></a></li> -->
 					</ul>
 				</nav>
 			</div>
@@ -111,10 +107,12 @@
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
 		<div class="main">
-			<div class="form-group" align="center">
-			<button name="category" class="btn btn-danger" onclick=javascrtpt:category()>分类管理</button>
-			<button name="customer" class="btn btn-danger" onclick=javascrtpt:customer()>用户管理</button>
-			<button name="seller" class="btn btn-danger">卖家管理</button>
+			<div class="main-content">
+				<div class="form-group" align="center">
+					<button name="category" class="btn btn-danger" onclick=javascript:category()>分类管理</button>
+					<button name="customer" class="btn btn-danger" onclick=javascript:customer()>用户管理</button>
+					<button name="seller" class="btn btn-danger" onclick=javascript:seller()>卖家管理</button>
+				</div>
 			</div>
 		</div>
 		<!-- END MAIN -->
@@ -132,6 +130,9 @@
 		};
 		function customer(){
 			window.location.href="customerList.html";
+		};
+		function seller(){
+			window.location.href="sellerList.html";
 		};
 		function logout(){
 			alert("成功")

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -59,6 +60,8 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public void update(TbAdmin admin) {
+		String password = DigestUtils.md5DigestAsHex(admin.getPassword().getBytes());
+		admin.setPassword(password);
 		adminMapper.updateByPrimaryKey(admin);
 	}
 
@@ -86,10 +89,8 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public PageResult findPage(TbAdmin admin, int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
-
 		TbAdminExample example = new TbAdminExample();
 		Criteria criteria = example.createCriteria();
-
 		if (admin != null) {
 			if (admin.getUsername() != null && admin.getUsername().length() > 0) {
 				criteria.andUsernameLike("%" + admin.getUsername() + "%");
@@ -97,20 +98,18 @@ public class AdminServiceImpl implements AdminService {
 			if (admin.getPassword() != null && admin.getPassword().length() > 0) {
 				criteria.andPasswordLike("%" + admin.getPassword() + "%");
 			}
-
 		}
-
 		Page<TbAdmin> page = (Page<TbAdmin>) adminMapper.selectByExample(example);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
 	@Override
 	public Result login(String username, String password) {
-
+		String pwd = DigestUtils.md5DigestAsHex(password.getBytes());
 		TbAdminExample example = new TbAdminExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andUsernameEqualTo(username);
-		criteria.andPasswordEqualTo(password);
+		criteria.andPasswordEqualTo(pwd);
 		List<TbAdmin> list = adminMapper.selectByExample(example);
 		if (list.size() > 0) {
 			return new Result(true, "登录成功");

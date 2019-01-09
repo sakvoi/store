@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
 <script src="../js/jquery.min.js"></script>
-<script src="../js/vue.min.js"></script>
+<script src="js/vue.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="js/vue-resource.min.js"></script>
@@ -28,6 +28,36 @@ a:hover {
 </style>
 </head>
 <body>
+	<!-- 注册 -->
+	<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	     	<h3 class="modal-title" id="modal-register-label">注册</h3>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body">
+	          <div>
+	            <label for="recipient-name" class="control-label">用户名:</label>
+	            <input type="text" class="form-control" v-model="username" placeholder="UserName">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">密码:</label>
+	            <input type="password" class="form-control" v-model="password" placeholder="Password">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="control-label">邮箱:</label>
+	            <input type="email" class="form-control" v-model="email" placeholder="Email">
+	          </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+	        <button type="button" v-on:click="register()" class="btn btn-primary">注册</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- 注册 End -->
 	<div id="header">
 		<div class="menu">
 			<a href="../seller/index.html">卖家</a>&nbsp;&nbsp;

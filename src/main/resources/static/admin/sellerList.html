@@ -99,10 +99,6 @@
 								</ul>
 							</div>
 						</li>
-						<!-- <li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>图表</span></a></li>
-						<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>通知</span></a></li>
-						<li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>表格</span></a></li>
-						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>图标</span></a></li> -->
 					</ul>
 				</nav>
 			</div>
@@ -123,19 +119,19 @@
 						<div class="modal-body" id="editModel">
 							<div>
 								<label for="recipient-name" class="control-label">姓名:</label>
-								<input type="text" class="form-control" v-model="sel.username" id="name" placeholder="Name">
+								<input type="text" class="form-control" v-model="seller.username" id="name" placeholder="Name">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">商铺名称</label>
-                           		<input type="text" class="form-control" v-model="sel.company" placeholder="公司名称" >
+                           		<input type="text" class="form-control" v-model="seller.company" placeholder="公司名称" >
       						</div>
       						<div>
 								<label for="recipient-name" class="control-label">工商注册号</label>
-                           		<input type="text" class="form-control" v-model="sel.license" placeholder="工商注册号" >
+                           		<input type="text" class="form-control" v-model="seller.license" placeholder="工商注册号" >
       						</div>
       						<div>
 								<label for="recipient-name" class="control-label">经营范围</label>
-                           		<input type="text" class="form-control" v-model="sel.scope" placeholder="经营范围" >
+                           		<input type="text" class="form-control" v-model="seller.scope" placeholder="经营范围" >
       						</div>
 						</div>
 						<div class="modal-footer">

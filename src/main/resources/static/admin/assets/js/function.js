@@ -1,3 +1,66 @@
+/***
+ * changePwd
+ */
+var changePwd = new Vue({
+	el:'changePwd',
+	data:{
+		id : null,
+		admin : []
+	},
+	methods:{
+		getInfo:function(){
+			this.$http.get('/admin/findOne',{params:{id:1}},{emulateJSON: true}).then(function(res){
+				this.admin = res.body
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
+		updatePwd:function(){
+			this.$http.post('/admin/update',{admin:this.admin}).then(function(res){
+				if (res.body.success) {
+					alert("修改成功");
+					location.href = "index.html"
+				} else {
+					alert("修改失败");
+					location.href = "login.html"
+				}
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	},
+	mounted:function(){
+		this.getInfo();
+	}
+});
+/***
+ * Login
+ */
+var login = new Vue({
+	el:'#login',
+	data:{
+		username:null,
+		password:null
+	},
+	methods:{
+		login:function(){
+			this.$http.get('/admin/login',{params:{username:this.username,password:this.password}},{emulateJSON: true}).then(function(res){
+				if (res.body.success) {
+					alert("登录成功");
+					location.href = "index.html"
+				} else {
+					alert("用户名或密码错误");
+					location.href = "login.html"
+				}
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	}
+});
+/***
+ * Customer
+ */
 var customer = new Vue({
 	el:'#customerList',
 	data:{
@@ -39,11 +102,14 @@ var customer = new Vue({
         this.findAll();
     }
 });
+/***
+ * SellerList
+ */
 var sellerList = new Vue({
 	el:'#sellerList',
 	data:{
 		sellers : null,
-		sel : []
+		seller : []
 	},
 	methods:{
 		del:function(id){
@@ -70,7 +136,7 @@ var sellerList = new Vue({
 		},
 		findOne:function(sid){
 			this.$http.get('/seller/findOne?id='+sid).then(function(res){
-				this.sel = res.body
+				this.seller = res.body
 			},function(){
 				console.log('请求失败处理');
 			});
@@ -80,6 +146,9 @@ var sellerList = new Vue({
         this.findAll();
     }
 });
+/***
+ * Category
+ */
 var category = new Vue({
 	el:'#category',
 	data:{
@@ -146,6 +215,9 @@ var category = new Vue({
         this.findAll();
     }
 });
+/***
+ * CategorySecond
+ */
 var categorysecond = new Vue({
 	el:'#categorysecond',
 	data:{
