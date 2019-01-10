@@ -62,3 +62,25 @@ var register = new Vue({
 		}
 	}
 });
+var showProducts = new Vue({
+	el:'#showProducts',
+	data:{
+		products:null,
+		categoryseconds:null
+	},
+	methods:{
+		findAll:function(){
+			this.$http.get('/product/findAll').then(function(res){
+				this.products = res.body;
+				this.$http.get('/categorysecond/findAll').then(function(res){
+					this.categoryseconds = res.body
+				});
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	},
+	mounted:function(){
+		this.findAll();
+	}
+});

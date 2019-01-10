@@ -138,7 +138,7 @@
 						</tr>
 						<tr v-for="(order,index) in orders">
 							<td>{{index+1}}</td>
-							<td>{{order.orderdate}}</td>
+							<td v-text="calDate(order.orderdate)"></td>
 							<td>{{order.totalprice}}￥</td>
 							<td v-if="order.status==0">未发货</td>
 							<td v-else>已发货</td>

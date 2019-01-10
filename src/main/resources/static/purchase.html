@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>store商城</title>
+		<script type="text/javascript" src="layui/layui.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/purchase.js" charset="UTF-8"></script>
+		<link rel="stylesheet" href="layui/css/layui.css" media="all"/>
+		<link rel="stylesheet" href="css/purchase.css" media="all"/>
+		<script type="text/javascript" src="js/PCASClass.js" charset="UTF-8"></script>
+		<!-- ICONS -->
+		<link rel="apple-touch-icon" sizes="76x76" href="img/icon.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="img/micon.png">
+	</head>
+	<body>
+		<div id="J_proHeader">
+			<div class="xm-product-box"> 
+				<div class="nav-bar" id="J_headNav"> 
+					<div class="container J_navSwitch"> 
+						<h2 class="J_proName">小米MIX 3</h2> 
+						<div class="con">
+							<div class="right">    
+								<a href="//www.mi.com/mix2s/">概述</a>
+								<!-- <span class="separator">|</span>     -->
+								<a href="//www.mi.com/mix2s/gallery/">设计</a>
+								<!-- <span class="separator">|</span>    --> 
+								<a href="//www.mi.com/mix2s/specs/">参数</a>
+								<!-- <span class="separator">|</span> -->    
+								<a href="//order.mi.com/queue/f2code" target="_blank">F码通道</a>
+								<!-- <span class="separator">|</span> -->
+								<a href="//item.mi.com/comment/10000085.html">用户评价</a>   
+							</div>
+						</div> 
+					</div> 
+				</div>
+			</div>
+		</div>
+		<div class="xm-buyBox">
+			<div class="layui-carousel" id="test10">
+				<div carousel-item="">
+					<div><img width="560" height="560" src="img/purchase-mix3_01.jpg"></div>
+					<div><img width="560" height="560" src="img/purchase-mix3_02.jpg"></div>
+					<div><img width="560" height="560" src="img/purchase-mix3_03.jpg"></div>
+					<div><img width="560" height="560" src="img/purchase-mix3_04.jpg"></div>
+				</div>
+			</div>
+			<div class="info-right">
+				<h1 class="pro-title">
+                    <span class="img"></span>
+                    <span class="name1">小米MIX 3</span>
+                </h1>
+                <p class="sale-desc" id="J_desc">
+                	磁动力滑盖全面屏  / 前后旗舰 AI 双摄 / 四曲面彩色陶瓷机身 / 高效 10W 无线充电
+                </p>
+                <div class="J_main">
+                	<p class="aftersale-company" id="J_aftersaleCompany" type="1" desc="null">store自营</p>
+                	<div class="pro-price">
+                        <span class="price">4999元 </span>
+                    </div>
+                <!---分厂地址-->
+                <div class="J_addressWrap">
+                	<div class="user-default-address">
+                		<i class="iconfont iconfont-location">地 &nbsp;址:</i>
+                		<div> 
+                			<div class="address-info">
+                				<span class="item"><select id="s_p" name="province"></select></span>
+                				<span class="item"><select id="s_c" name="city"></select></span>
+                				<span class="item"><select id="s_a" name="area"></select></span>
+                				<!--<span class="item">永定门外街道</span>-->
+                			</div> 
+                			 
+                		</div>
+                		<div class="product-status" id="J_productStatus"> 
+                			<span class="init">
+                				详细地址：<input id="x_address" type="text" placeholder="请输入详细地址....."/>
+                			</span>
+                			<button class="layui-btn layui-btn-danger" onclick="showAddress()">
+                				确 认
+                			</button>
+                		</div>
+                		<img width="26" height="26" style="position: absolute;padding-top: 15px;" src="img/posion.jpg" />
+                		<div class="adressBox">
+	                		<span id="p"></span>
+	                		<span id="c"></span>
+	                		<span id="a"></span>
+	                		<span id="xd"></span>
+                		</div>
+                	</div>
+                </div>
+                <!--描述：选这版本、颜色-->
+                <div class="pro-choose">
+                	<div class="choose-check">选择版本</div>
+                	<ul class="version-choose">
+                		<li class="btn">
+                			<a onclick="show()">
+                				<span class="name">8G+128G</span>
+                				<span class="price">3599元</span>
+                			</a>
+                		</li>
+                		<li class="btn">
+                			<a>
+                				<span class="name">6G+128G</span>
+                				<span class="price">3299元</span>
+                			</a>
+                		</li>
+                		<li class="btn">
+                			<a>
+                				<span class="name">8G+256G</span>
+                				<span class="price">3999元</span>
+                			</a>
+                		</li>
+                		<li class="btn">
+                			<a>
+                				<span class="name">故宫特别版</span>
+                				<span class="price">4999元</span>
+                			</a>
+                		</li>
+                	</ul>
+                </div>
+            <!--选择颜色-->
+            <!--<div class="choose-color">
+            	<div class="choose-check-color">选择颜色</div>
+            	<ul class="version-choose" style="display: none;" id="ul1">
+            		<li class="btn01">
+            			<a>
+            				<img  class="done" src="img/6ef3215af052c970f5c9fe0ac4c2fe26.jpg"/>
+            				&nbsp;宝石蓝
+            			</a>
+            		</li>
+            		<li class="btn01">
+            			<a>
+            				<img  class="done" src="img/84e2a328382e77d7f4db0c1ec6560c97.jpg"/>
+            				&nbsp;黑 色
+            			</a>
+            		</li>
+            	</ul>
+            </div>-->
+                
+            <!--购买确认-->
+            <div class="pro-list" id="J_proList">
+            	<ul>     
+            		<li>
+            			小米MIX 3 全网通版 8GB+128GB 黑色  
+            			<span>&nbsp;&nbsp;3599 元 
+            			</span> 
+            		</li>           
+            		<li class="totlePrice">   
+            			总计   ：3599元  
+            		</li>
+            	</ul>
+            </div>
+            <!--选择购买-->
+            <ul class="btn-wrap" id="J_buyBtnBox">       
+            	<li> 
+            		<a href="javascript:void(0);" class="btn btn-primary  btn-biglarge J_proBuyBtn" data-type="common" data-isbigtap="false" data-name="加入购物车">
+            			加入购物车
+            		</a> 
+            	</li>
+            </ul>
+		</div>
+		</div>
+		<script>
+			layui.use(['carousel', 'form'], function(){
+			  var carousel = layui.carousel
+			  ,form = layui.form;
+			  //图片轮播
+			  carousel.render({
+			    elem: '#test10'
+			    ,width: '560px'
+			    ,height: '560px'
+			    ,interval: 5000
+			  });
+			  var $ = layui.$, active = {
+			    set: function(othis){
+			      var THIS = 'layui-bg-normal'
+			      ,key = othis.data('key')
+			      ,options = {};
+			      
+			      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+			      options[key] = othis.data('value');
+			      ins3.reload(options);
+			    }
+			  };
+			  
+			  //监听开关
+			  form.on('switch(autoplay)', function(){
+			    ins3.reload({
+			      autoplay: this.checked
+			    });
+			  });
+			  
+			  $('.demoSet').on('keyup', function(){
+			    var value = this.value
+			    ,options = {};
+			    if(!/^\d+$/.test(value)) return;
+			    
+			    options[this.name] = value;
+			    ins3.reload(options);
+			  });
+			  
+			  //其它示例
+			  $('.demoTest .layui-btn').on('click', function(){
+			    var othis = $(this), type = othis.data('type');
+			    active[type] ? active[type].call(this, othis) : '';
+			  });
+			});
+		</script>
+		<script>
+			function show(v){
+				document.getElementsById("div"+ v).style.display="";
+			}
+			function hidden(v){
+				v.style.display = "none";
+			}
+		</script>
+		<script type="text/javascript">
+			new PCAS("province","city","area","四川省","成都市","郫县") ;
+		</script>
+	</body>
+</html>

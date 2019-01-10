@@ -1,5 +1,6 @@
 *{
-	
+	margin:0;
+	padding:0;
 }
 .topic01,h2{
 	height: 68px;
@@ -17,7 +18,7 @@
 	width: 1226px;
 	height: 434px;
 	background: #fff;
-	margin-left: 15%;
+	margin-left: 17%;
 	transition: transform 0.5s;
 }
 .content01:hover{
@@ -88,16 +89,18 @@ p strong{
     margin: 0;
 }
 .row2{
-	width: 1240px;
+	width: auto;
 	height: 482px;
-	margin-left: 15%;
+	padding-top:2%;
+	padding-left:-5%;
+	/* margin-left: 15%; */
 }
 .row2 .row2-c1{
-	width: 606px;
+	width: 600px;
 	height: 358px;
-	float: left;
 	transition: transform 0.5s;
 }
+
 .row2-c1:hover,.row2-c2:hover{
 	cursor: pointer;
 	transform: translate(0,-3px);

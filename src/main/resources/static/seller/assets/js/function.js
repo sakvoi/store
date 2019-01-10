@@ -63,6 +63,11 @@ var orderManage = new Vue({
 		orders : null
 	},
 	methods:{
+		calDate:function(time){
+			var d = new Date(time);
+			var times=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds(); 
+			return times;
+		},
 		findAll:function(){
 			this.$http.get('/order/findAll').then(function(res){
 				this.orders = res.body
@@ -84,6 +89,11 @@ var productManage = new Vue({
 		csname : null
 	},
 	methods:{
+		calDate:function(time){
+			var d = new Date(time);
+			var times=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds(); 
+			return times
+		},
 		update:function(){
 			
 		},

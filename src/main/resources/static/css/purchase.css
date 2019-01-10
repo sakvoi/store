@@ -1,0 +1,276 @@
+#J_proHeader{
+	width: 100%;
+	height: 65px;
+}
+.xm-buyBox{
+	margin-left: 5%;
+}
+.xm-product-box {
+    position: relative;
+    z-index: 4;
+    background: #fff;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    -webkit-box-shadow: 0px 5px 5px rgba(0,0,0,0.07);
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.07);
+}
+.right a{
+	width: 28px;
+	height: 16px;
+	color: #616161;
+	text-decoration: none;
+	/*padding-right: 2px;*/
+	border: none;
+}
+.right .separator{
+	width: 3.7px;
+	height: 16px;
+	line-height: 16px;
+    margin: 0 .25em;
+    color: #e0e0e0;
+}
+.xm-product-box .nav-bar {
+    position: relative;
+    height: 63px;
+    width: 100%;
+    margin-top: 0;
+    color: #616161;
+}
+.container {
+    width: 1224px;
+}
+.container {
+    width: 1226px;
+    *zoom: 1;
+    margin-right: auto;
+    margin-left: auto;
+}
+.xm-product-box .nav-bar h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 60px;
+    color: #212121;
+    float: left;
+}
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+.xm-product-box .nav-bar .right, .xm-product-box .nav-bar .left {
+    float: right;
+    _display: inline;
+    margin: 17px 0 0 0;
+}
+.xm-buyBox {
+    padding-bottom: 50px;
+}
+#test10{
+	float: left;
+}
+.info-right{
+	margin-top: 30px;
+	margin-left: 12px;
+	float: left;
+}
+.pro-title{
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: normal;
+    color: #212121;
+}
+ .sale-desc {
+    color: #b0b0b0;
+    margin: 0;
+    padding: 0;
+    padding-top: 25px;
+}
+p, pre {
+    margin: 1em 0;
+}
+.aftersale-company {
+    margin-bottom: 0;
+    color: #ff6700;
+}
+.pro-price {
+    display: block;
+    font-size: 18px;
+    line-height: 1;
+    color: #ff6700;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 12px 0 20px;
+}
+.J_addressWrap{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+ .user-default-address {
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    padding-left: 50px;
+}
+.user-default-address {
+    padding: 30px 40px 30px 32px;
+    border-top: 1px solid #e0e0e0;
+    position: relative;
+}
+.user-default-address .address-info {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+}
+.address-info .item{
+	/*letter-spacing: 10px;*/
+	padding-left: 5px;
+}
+.switch-choose-regions {
+	padding-top: 10px;
+	padding-right: 200px;
+	padding-left: 2px;
+    line-height: 1px;
+    color: #ff6700;
+    cursor: pointer;
+    float: right;
+}
+.product-status {
+	height: 30px;
+	left: 5px;
+	padding-top: 30px;
+    color: #b0b0b0;
+}
+.user-default-address i{
+	float: left;
+	line-height: 22px;
+	font-size: 10px;
+	font-weight: bold;
+	font-family: "黑体";
+	color: #000000;
+}
+.init {
+	margin-right: 10px;
+	letter-spacing: 2px;
+    display: block;
+    color: #ff6700;
+}
+.layui-btn{
+	width: 40px;
+	height: 20px;
+	line-height: 20px;
+	padding-left: 7px;
+	font-size: 10px;
+}
+.adressBox{
+	width: 500px;
+	height: 24px;
+	line-height: 24px;
+	margin-left: 30px;
+	padding-top: 15px;
+}
+.user-default-address .product-status {
+    color: #b0b0b0;
+}
+.pro-choose .choose-check{
+	font-size: 18px;
+	margin-top: 10px;
+    /*padding-bottom: 5px;*/
+}
+.version-choose{
+	width: 606px;
+	height: 118px;
+	/*display: none;*/
+}
+/*#ul1{
+	display: none;
+}*/
+.btn{
+	margin-top: 15px;
+	margin-right: 6px;
+	list-style: none;
+	cursor: pointer;
+	float: left;
+}
+.btn,a{
+	
+	border: solid 1px #B2B2B2;
+	width: 290px;
+	height: 42px;
+	line-height: 42px;
+	text-align: left;
+	color: #000000;
+	/*margin-left: 6px;*/
+}
+.btn .name{
+	width: 170px;
+	height: 42px;
+	padding-left: 34px;
+}
+.btn .price{
+	width: 52px;
+	height: 42px;
+	padding-right: 31px;
+}
+.btn a,span{
+	float: left;
+}
+.choose-color{
+	margin-top: 30px;
+}
+.choose-color .choose-check-color{
+	font-size: 18px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
+.btn01>a{
+	width: 290px;
+	height: 42px;
+	text-align: center;
+	margin: 0 10px 0 0;
+	float: left;
+	line-height: 42px;
+}
+.done{
+	width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+.pro-list {
+	height: 110px;
+    background: #f9f9fa;
+    padding: 30px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.pro-list ul li:first-child {
+    margin-top: 0;
+}
+.pro-list ul li {
+    list-style: none;
+    line-height: 30px;
+}
+.pro-list ul li>span{
+	float: right;
+}
+.totlePrice{
+	color: #FF6700;
+    font-size: 24px;
+    padding-top: 40px;
+}
+.btn-wrap{
+	height: 400px;
+}
+.btn-wrap li a{
+	width: 200px;
+	height: 42px;
+	line-height: 42px;
+	font-size: 24px;
+	color: #E8E8E8;
+	margin-top: -20px;
+	/*padding-top: 10px;*/
+	background-color: #FF6700;
+	text-align-last: center;
+}

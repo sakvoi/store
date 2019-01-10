@@ -116,14 +116,13 @@ a:hover {
 			</div>
 		</div>
 	</div>
-	<div>
+	<div id="showProducts">
 		<div class="topic01">
 			<h2 class="min">明星产品</h2>
 		</div>
 		<div class="content01">
 			<div class="content01-left">
-				<a class="exposure"><img class="J_lazy" alt="小米8 青春版"
-					style="background-color: #C4BFD0;" src="img/content-left.jpg" /></a>
+				<a class="exposure"><img class="J_lazy" alt="小米8 青春版" style="background-color: #C4BFD0;" src="img/content-left.jpg" /></a>
 			</div>
 			<div class="content01-right">
 				<h3 class="title">小米8 青春版</h3>
@@ -135,66 +134,23 @@ a:hover {
 					<a>了解产品></a>
 				</p>
 			</div>
-
 		</div>
-		<div class="row2">
-			<div class="row2-c1">
-				<div class="row2-c1img">
-					<a><img width="606px" height="358px"
-						src="img/24b7f3c26569ea91b68551f32109dcb1.jpg" /></a>
-				</div>
-				<div class="row3">
-					<h3 class="title">小米8</h3>
-					<p class="desc">全球首款双频GPS，骁龙845</p>
-					<p class="price">
-						<strong>2299</strong>元起
-						<del>2699元</del>
-					</p>
-				</div>
-			</div>
-			<div class="row2-c2">
-				<div class="row2-c2img">
-					<a><img width="606px" height="358px"
-						src="img/0741bc542844bf3dd4b51a794b559bc9.jpg" /></a>
-				</div>
-				<div class="row3">
-					<h3 class="title">小米8 SE</h3>
-					<p class="desc">三星 AMOLED 全面屏</p>
-					<p class="price">
-						<strong>1699</strong>元起
-						<del>1999元</del>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="interval"></div>
-		<div class="row2">
-			<div class="row2-c1">
-				<div class="row2-c1img">
-					<a><img width="606px" height="358px"
-						src="img/6d0aab16e4264a97f615ba3041d71b6c.jpg" /></a>
-				</div>
-				<div class="row3">
-					<h3 class="title">红米6</h3>
-					<p class="desc">小屏高性能的双摄手机</p>
-					<p class="price">
-						<strong>729</strong>元起
-						<del>799元</del>
-					</p>
-				</div>
-			</div>
-			<div class="row2-c2">
-				<div class="row2-c2img">
-					<a><img width="606px" height="358px"
-						src="img/d5aa5040e63a4ce8ab8db933ad31c8b3.jpg" /></a>
-				</div>
-				<div class="row3">
-					<h3 class="title">小米MIX 2S</h3>
-					<p class="desc">陶瓷机身 手机中的艺术品</p>
-					<p class="price">
-						<strong>2499</strong>元起
-						<del>3599元</del>
-					</p>
+		<div v-for="product in products">
+			<div v-if="product.status==0">
+				<div class="row2" style="float:left;margin-left:12%;">
+					<div class="row2-c1" >
+						<div class="row2-c1img">
+							<a><img width="606px" height="358px" v-bind:src="product.image" /></a>
+						</div>
+						<div class="row3">
+							<h3 class="title">{{product.pname}}</h3>
+							<p class="desc">{{product.descs}}</p>
+							<p class="price">
+								<strong>{{product.storeprice}}</strong>元起
+								<del>{{product.marketprice}}元</del>
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
