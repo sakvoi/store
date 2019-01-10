@@ -68,6 +68,17 @@ var customer = new Vue({
 		user : []
 	},
 	methods:{
+		update:function(){
+			this.$http.post('/customer/update',{customer:this.user}).then(function(res){
+				if(res.body.success){
+					alert("修改成功！");
+					location.href="customerList.html";
+				}else{
+					alert("修改失败！")
+					location.href="customerList.html";
+				}
+			});
+		},
 		del:function(id){
 			var ids=[];
 			ids=id
@@ -112,6 +123,19 @@ var sellerList = new Vue({
 		seller : []
 	},
 	methods:{
+		update:function(){
+			this.$http.post('/seller/update',{seller:this.seller}).then(function(res){
+				if(res.body.success){
+					alert("修改成功！");
+					location.href="sellerList.html";
+				}else{
+					alert("修改失败！");
+					location.href="sellerList.html";
+				}
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
 		del:function(id){
 			var ids = [];
 			ids = id

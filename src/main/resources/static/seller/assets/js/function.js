@@ -3,9 +3,21 @@ var productManage = new Vue({
 	data:{
 		products : null,
 		categoryseconds : null,
-		product : []
+		product : [],
+		csname : null
 	},
 	methods:{
+		update:function(){
+			
+		},
+		del:function(product){
+			this.product=product
+			this.$http.post('/product/delete?id='+this.product.pid).then(function(res){
+				this.products = res.body
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
 		findAll:function(){
 			this.$http.get('/product/findAll').then(function(res){
 				this.products = res.body
@@ -15,7 +27,13 @@ var productManage = new Vue({
 		},
 		findOne:function(product){
 			this.$http.get('/product/findOne?id='+product.pid).then(function(res){
-				this.product = res.body
+				this.product = res.body;
+				this.$http.get('/categorysecond/findOne?id='+product.csid).then(function(res){
+					/*alert(res.body.csname)*/
+					this.csname=res.body.csname;
+				},function(){
+					console.log('请求失败处理');
+				});
 			},function(){
 				console.log('请求失败处理');
 			});

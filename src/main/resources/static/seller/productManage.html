@@ -165,12 +165,12 @@
 						</div>
 						<div>
 							<label for="recipient-name" class="control-label">所属类型:</label>
-							<input type="text" class="form-control" id="" placeholder="所属类型">
+							<input type="text" class="form-control" v-model="csname" id="" placeholder="所属类型">
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-						<button type="button" onclick="edit()" class="btn btn-primary">修改</button>
+						<button type="button" v-on:click="update()" class="btn btn-primary">修改</button>
 					</div>
 				</div>
 			</div>
@@ -179,7 +179,7 @@
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
-			<div class="main-content" id="productManage">
+			<div class="main-content">
 				<div class="form-group">
 					<button type="button" data-toggle="modal" data-target="#add" class="btn btn-success">添加</button>
 				</div>
@@ -203,7 +203,7 @@
 							<td>{{product.csid}}</td>
 							<td>
 								<button data-toggle="modal" data-target="#edit" v-on:click="findOne(product)" type="button" class="btn btn-primary">编辑</button>
-								<button type="button" v-on:click="del(csecond.csid)" class="btn btn-danger">删除</button>
+								<button type="button" v-on:click="del(product)" class="btn btn-danger">删除</button>
 							</td>
 						</tr>
 					</table>
