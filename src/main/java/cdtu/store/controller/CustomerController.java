@@ -2,6 +2,8 @@ package cdtu.store.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,9 +71,10 @@ public class CustomerController {
 	 * @return
 	 */
 	@RequestMapping("/register")
-	public Result register(@RequestBody TbCustomer customer) {
+	public Result register(@RequestBody TbCustomer customer,HttpSession session) {
 		try {
 			customerService.register(customer);
+			session.setAttribute("user", customer.getUsername());
 			return new Result(true, "注册成功");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -136,12 +139,55 @@ public class CustomerController {
 	public PageResult search(@RequestBody TbCustomer customer, int page, int rows) {
 		return customerService.findPage(customer, page, rows);
 	}
-
+	
+	/***
+	 * 登录
+	 * 
+	 * @param username
+	 * @param password
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/login")
-	public Result login(String username, String password) {
+	public Result login(String username, String password,HttpSession session) {
+		session.setAttribute("user", username);
 		return customerService.login(username, password);
 	}
+	
+	/***
+	 * 获取用户Session
+	 * 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/getUser")
+	public String getUser(HttpSession session) {
+		String user = (String) session.getAttribute("user");
+		return user;
+	}
+	
+	/***
+	 * 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/removeUser")
+	public Result removeUser(HttpSession session) {
+		try{
+			session.removeAttribute("user");
+			return new Result(true, "注销成功");
+		}catch(Exception e){
+			e.printStackTrace();
+			return new Result(false, "注销失败");
+		}
+	}
 
+	/***
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	@RequestMapping("/findByNamePwd")
 	public Result findByNamePwd(String username, String password) {
 		return customerService.findByNamePwd(username, password);

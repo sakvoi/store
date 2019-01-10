@@ -2,12 +2,15 @@
 <html>
 <head>
 <title>登录</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="apple-touch-icon" sizes="76x76" href="assets/img/icon.png">
-<link rel="icon" type="image/png" sizes="96x96" href="assets/img/micon.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="assets/img/micon.png">
 <script src="assets/js/vue.min.js"></script>
 <script src="assets/js/vue-resource.min.js"></script>
 <script>
@@ -33,15 +36,16 @@
 				<!-- <div class="alert-close"> </div> -->
 			</div>
 			<div class="form" id="login">
-				<li>
-					<input type="text" v-model="username" placeholder="UserName" id="username" class="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'UserName';}">
-					<a href="#" class=" icon user"></a>
-				</li>
+				<li><input type="text" v-model="username"
+					placeholder="UserName" id="username" class="text"
+					onfocus="this.value = '';"
+					onblur="if (this.value == '') {this.value = 'UserName';}">
+					<a href="#" class=" icon user"></a></li>
 				<div class="clear"></div>
-				<li>
-					<input type="password" v-model="password" placeholder="Password" id="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-					<a href="#" class="icon lock"></a>
-				</li>
+				<li><input type="password" v-model="password"
+					placeholder="Password" id="password" onfocus="this.value = '';"
+					onblur="if (this.value == '') {this.value = 'Password';}">
+					<a href="#" class="icon lock"></a></li>
 				<div class="clear"></div>
 				<div class="submit">
 					<input type="submit" v-on:click="login()" value="Sign in">

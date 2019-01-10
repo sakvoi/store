@@ -1,6 +1,8 @@
 package cdtu.store.controller;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -111,4 +113,45 @@ public class SellerController {
 		return sellerService.findPage(seller, page, rows);		
 	}
 	
+	/***
+	 * 查询
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping("/findByNamePwd")
+	public Result findByNamePwd(String username, String password) {
+		return sellerService.findByNamePwd(username, password);
+	}
+
+	/**
+	 * 登录
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	@RequestMapping("/login")
+	public Result login(String username, String password, HttpSession session) {
+		session.setAttribute("user", username);
+		return sellerService.login(username, password);
+	}
+	
+	@RequestMapping("/getUser")
+	public String getUser(HttpSession session) {
+		String user = (String) session.getAttribute("user");
+		return user;
+	}
+	
+	@RequestMapping("/removeUser")
+	public Result removeUser(HttpSession session) {
+		try{
+			session.removeAttribute("user");
+			return new Result(true, "注销成功");
+		}catch(Exception e){
+			e.printStackTrace();
+			return new Result(false, "注销失败");
+		}
+	}
 }

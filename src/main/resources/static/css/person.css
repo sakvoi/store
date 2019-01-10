@@ -1,0 +1,84 @@
+body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}
+ol,li,ul{margin:0;padding:0;list-style:none;}
+a{text-decoration:none;}
+#header{
+	width:100%;
+	height:40px;
+	background:RGB(51,51,51);
+	color:#808080;
+}
+.menu{
+	margin-left:73.3%;
+}
+.top{
+	height:100px;
+	width:100%;
+	/*border:1px solid red;*/
+	background:#fff;
+	box-shadow:0 5px 5px #ddd;
+}
+.navbar{
+	margin-left:29%;
+	margin-top:-5%;
+}
+.navbar ul li{
+	float:left;
+	line-height:120px;
+}
+.navbar ul li:hover a{
+	color:#ff6700;
+}
+.navbar ul li a{
+	color:#333;
+	font-size:16px;
+	padding:0 15px;
+}
+#content{
+	width:100%;
+	height:850px;
+	background:rgb(225,225,225);
+	margin-top:105px;
+}
+.box_left{
+	width:236px;
+	height:700px;
+	background:#fff;
+	float:left;
+}
+.fix{
+	padding-left:90px;
+	padding-top:40px;
+}
+.box_right{
+	width:980px;
+	height:600px;
+	background:#fff;
+	float:left;
+	margin-left:10px;
+}
+.img_head{
+	width:180px;
+	height:180px;
+	border-radius:50%;
+	border:1.5px solid #ddd;
+	padding:6px;
+	margin-left:350px;
+	margin-top:40px;
+}
+.table{
+	margin-top:60px;
+}
+.ipt_1{
+	width:100px;
+	margin-left:-30px;
+}
+.btn_b{
+	width:120px;
+	height:50px;
+	font-size:1.5em;
+	background:#ff6700;
+	color:#fff;
+	border:0;
+	margin-left:82%;
+	margin-top:6%;
+}

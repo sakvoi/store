@@ -1,3 +1,34 @@
+var getUser = new Vue({
+	el:'#getUser',
+	data:{
+		user:null
+	},
+	methods:{
+		getUser:function(){
+			this.$http.get('/customer/getUser').then(function(res){
+				this.user=res.bodyText
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
+		logout:function(){
+			this.$http.get('customer/removeUser').then(function(res){
+				if(res.body.success){
+					alert("注销成功！")
+					location.href = "index.html"
+				}else{
+					alert("注销失败！")
+					location.href = "index.html"
+				}
+			},function(){
+				console.log("请求失败处理")
+			});
+		}
+	},
+	mounted:function(){
+		this.getUser();
+	}
+});
 var login = new Vue({
 	el:'#login',
 	data:{

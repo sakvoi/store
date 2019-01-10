@@ -1,3 +1,56 @@
+var getUser = new Vue({
+	el:'#getUser',
+	data:{
+		user:null
+	},
+	methods:{
+		getUser:function(){
+			this.$http.get('/seller/getUser').then(function(res){
+				this.user=res.bodyText
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
+		logout:function(){
+			this.$http.get('/seller/removeUser').then(function(res){
+				if(res.body.success){
+					alert("注销成功！")
+					location.href = "login.html"
+				}else{
+					alert("注销失败！")
+					location.href = "login.html"
+				}
+			},function(){
+				console.log("请求失败处理")
+			});
+		}
+	},
+	mounted:function(){
+		this.getUser();
+	}
+});
+var login = new Vue({
+	el:'#login',
+	data:{
+		username:null,
+		password:null
+	},
+	methods:{
+		login:function(){
+			this.$http.get('/seller/login',{params:{username:this.username,password:this.password}},{emulateJSON: true}).then(function(res){
+				if (res.body.success) {
+					alert("登录成功");
+					location.href = "index.html"
+				} else {
+					alert("用户名或密码错误");
+					location.href = "login.html"
+				}
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	}
+});
 var sellerInfo = new Vue({
 	el : '#sellerInfo',
 	data:{

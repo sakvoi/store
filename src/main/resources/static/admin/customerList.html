@@ -1,66 +1,71 @@
 <!doctype html>
 <html lang="zh">
-
 <head>
-	<title>用户列表</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
-	<!-- MAIN CSS -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- GOOGLE FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/micon.png">
-	<script src="assets/js/vue.min.js"></script>
-	<!-- Javascript -->
-	<script src="assets/vendor/jquery/jquery.min.js"></script>
-	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-	<script src="assets/scripts/klorofil-common.js"></script>
-	<script src="assets/js/vue-resource.min.js"></script>
+<title>用户列表</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!-- VENDOR CSS -->
+<link rel="stylesheet"
+	href="assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="assets/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="assets/css/main.css">
+<!-- GOOGLE FONTS -->
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
+	rel="stylesheet">
+<!-- ICONS -->
+<link rel="apple-touch-icon" sizes="76x76" href="assets/img/icon.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="assets/img/micon.png">
+<script src="assets/js/vue.min.js"></script>
+<!-- Javascript -->
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="assets/scripts/klorofil-common.js"></script>
+<script src="assets/js/vue-resource.min.js"></script>
 </head>
-
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="assets/img/logo-light.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="index.html"><img src="assets/img/logo-light.png"
+					alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
-					<button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+					<button type="button" class="btn-toggle-fullwidth">
+						<i class="lnr lnr-arrow-left-circle"></i>
+					</button>
 				</div>
 				<form class="navbar-form navbar-left">
 					<div class="input-group">
-						<input type="text" value="" class="form-control" placeholder="搜索首页...">
-						<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
+						<input type="text" value="" class="form-control"
+							placeholder="搜索首页..."> <span class="input-group-btn"><button
+								type="button" class="btn btn-primary">Go</button></span>
 					</div>
 				</form>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="../index.html">商城首页</a>
-						</li>
-						<li class="dropdown">
-							<a href="login.html">登录</a>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/admin.jpg" class="img-circle" alt="Avatar"> <span>Kira</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+						<li class="dropdown"><a href="../index.html">商城首页</a></li>
+						<li class="dropdown"><a href="login.html">登录</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><img src="assets/img/admin.jpg"
+								class="img-circle" alt="Avatar"> <span>Kira</span> <i
+								class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>个人中心</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
 								<li><a href="#"><i class="lnr lnr-cog"></i> <span>设置</span></a></li>
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
-							</ul>
-						</li>
+							</ul></li>
 					</ul>
 				</div>
 			</div>
@@ -71,106 +76,118 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>首页</span></a></li>
-						<li>
-							<a href="#subPages" data-toggle="collapse" class=""><i class="lnr lnr-file-empty"></i> <span>分类</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+						<li><a href="index.html" class=""><i class="lnr lnr-home"></i>
+								<span>首页</span></a></li>
+						<li><a href="#subPages" data-toggle="collapse" class=""><i
+								class="lnr lnr-file-empty"></i> <span>分类</span> <i
+								class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse">
 								<ul class="nav">
 									<li><a href="category.html" class="">一级分类</a></li>
 									<li><a href="categorySecond.html" class="">二级分类</a></li>
 								</ul>
-							</div>
-						</li>
-						<li>
-							<a href="#customer" data-toggle="collapse" class="active"><i class="lnr lnr-user"></i> <span>用户管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							</div></li>
+						<li><a href="#customer" data-toggle="collapse" class="active"><i
+								class="lnr lnr-user"></i> <span>用户管理</span> <i
+								class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="customer" class="collapse in">
 								<ul class="nav">
 									<li><a href="customerList.html" class="active">用户列表</a></li>
 									<li><a href="sellerList.html" class="">卖家列表</a></li>
 								</ul>
-							</div>
-						</li>
-						<li>
-							<a href="#setting" data-toggle="collapse" class="collapsed"><i class="lnr lnr-cog"></i> <span>设置</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							</div></li>
+						<li><a href="#setting" data-toggle="collapse"
+							class="collapsed"><i class="lnr lnr-cog"></i> <span>设置</span>
+								<i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="setting" class="collapse ">
 								<ul class="nav">
 									<li><a href="changePwd.html" class="">修改密码</a></li>
 									<li><a href="#" class="">退出登录</a></li>
 								</ul>
-							</div>
-						</li>
+							</div></li>
 					</ul>
 				</nav>
 			</div>
 		</div>
 		<!-- END LEFT SIDEBAR -->
 		<div id="customerList">
-		<!-- edit -->
+			<!-- edit -->
 			<div class="modal fade" id="edit" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h3 class="modal-title" id="modal-register-label">编辑</h3>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body" id="editModel">
 							<div>
-								<label for="recipient-name" class="control-label">用户名:</label>
-								<input type="text" class="form-control" v-model="user.username" placeholder="用户名" readonly unselectable="on">
+								<label for="recipient-name" class="control-label">用户名:</label> <input
+									type="text" class="form-control" v-model="user.username"
+									placeholder="用户名" readonly unselectable="on">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">真实姓名:</label>
-								<input type="text" class="form-control" v-model="user.realname" placeholder="真实姓名" readonly unselectable="on">
+								<input type="text" class="form-control" v-model="user.realname"
+									placeholder="真实姓名" readonly unselectable="on">
 							</div>
 							<div>
-								<label for="recipient-name" class="control-label">性别:</label>
-								<label class="radio-inline">
-								<input :checked='user.sex=="男"' type="radio" name="genderRadioOptions" id="genderRadio1">男
-								</label>
-								<label class="radio-inline">
-								<input :checked='user.sex=="女"' type="radio" name="genderRadioOptions" id="genderRadio2">女
+								<label for="recipient-name" class="control-label">性别:</label> <label
+									class="radio-inline"> <input :checked='user.sex=="男"'
+									type="radio" name="genderRadioOptions" id="genderRadio1">男
+								</label> <label class="radio-inline"> <input
+									:checked='user.sex=="女"' type="radio" name="genderRadioOptions"
+									id="genderRadio2">女
 								</label>
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">出生日期:</label>
-								<input type="date" class="input-append date" v-model="user.birthdate" placeholder="出生日期">
+								<input type="date" class="input-append date"
+									v-model="user.birthdate" placeholder="出生日期">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">身份证号:</label>
-								<input type="text" class="form-control" v-model="user.idcard" placeholder="身份证号" readonly unselectable="on">
+								<input type="text" class="form-control" v-model="user.idcard"
+									placeholder="身份证号" readonly unselectable="on">
 							</div>
 							<div>
-								<label for="recipient-name" class="control-label">邮箱:</label>
-								<input type="text" class="form-control" v-model="user.email" id="email" placeholder="邮箱" readonly unselectable="on">
+								<label for="recipient-name" class="control-label">邮箱:</label> <input
+									type="text" class="form-control" v-model="user.email"
+									id="email" placeholder="邮箱" readonly unselectable="on">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">联系电话:</label>
-								<input type="text" class="form-control" v-model="user.tel" placeholder="联系电话" >
+								<input type="text" class="form-control" v-model="user.tel"
+									placeholder="联系电话">
 							</div>
 							<div>
-								<label for="recipient-name" class="control-label">地址:</label>
-								<input type="text" class="form-control" v-model="user.address" id="address" placeholder="地址">
+								<label for="recipient-name" class="control-label">地址:</label> <input
+									type="text" class="form-control" v-model="user.address"
+									id="address" placeholder="地址">
 							</div>
 							<div>
-								<label for="recipient-name" class="control-label">邮编:</label>
-								<input type="text" class="form-control" v-model="user.code" id="code" placeholder="邮编">
+								<label for="recipient-name" class="control-label">邮编:</label> <input
+									type="text" class="form-control" v-model="user.code" id="code"
+									placeholder="邮编">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">账号状态:</label>
-								<label class="radio-inline">
-								 <input :checked='user.status==0' type="radio" name="status" id="statusRadio1" value="0">正常
-								</label>
-								<label class="radio-inline">
-								 <input :checked='user.status==1' type="radio" name="status" id="statusRadio2" value="1">冻结
+								<label class="radio-inline"> <input
+									:checked='user.status==0' type="radio" name="status"
+									id="statusRadio1" value="0">正常
+								</label> <label class="radio-inline"> <input
+									:checked='user.status==1' type="radio" name="status"
+									id="statusRadio2" value="1">冻结
 								</label>
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-							<button type="button" v-on:click="update()" class="btn btn-primary">修改</button>
+							<button type="button" v-on:click="update()"
+								class="btn btn-primary">修改</button>
 						</div>
 					</div>
 				</div>
@@ -181,37 +198,39 @@
 				<!-- MAIN CONTENT -->
 				<div class="main-content">
 					<div class="form-group">
-					<table class="table">
-					<tr>
-						<th width="80px">序号</th>
-						<th width="100px">姓名</th>
-						<th width="100px">性别</th>
-						<th width="200px">身份证</th>
-						<th width="200px">邮箱</th>
-						<th width="120px">联系方式</th>
-						<th width="200px">状态</th>
-						<th>操作</th>
-					</tr>
-					<tr v-for="(customer,index) in customers">
-						<td>{{index+1}}</td>
-						<td>{{customer.username}}</td>
-						<td>{{customer.sex}}</td>
-						<td>{{customer.idcard}}</td>
-						<td>{{customer.email}}</td>
-						<td>{{customer.tel}}</td>
-						<td v-if="customer.status==0">正常</td>
-						<td v-else="customer.status==1">冻结</td>
-						<td>
-							<button type="button" data-toggle="modal" data-target="#edit" v-on:click="findOne(customer.uid)" class="btn btn-primary">编辑</button>
-							<button type="button" v-on:click="del(customer.uid)" class="btn btn-danger">删除</button>
-						</td>
-					</tr>
-					</table>
+						<table class="table">
+							<tr>
+								<th width="80px">序号</th>
+								<th width="100px">姓名</th>
+								<th width="100px">性别</th>
+								<th width="200px">身份证</th>
+								<th width="200px">邮箱</th>
+								<th width="120px">联系方式</th>
+								<th width="200px">状态</th>
+								<th>操作</th>
+							</tr>
+							<tr v-for="(customer,index) in customers">
+								<td>{{index+1}}</td>
+								<td>{{customer.username}}</td>
+								<td>{{customer.sex}}</td>
+								<td>{{customer.idcard}}</td>
+								<td>{{customer.email}}</td>
+								<td>{{customer.tel}}</td>
+								<td v-if="customer.status==0">正常</td>
+								<td v-else="customer.status==1">冻结</td>
+								<td>
+									<button type="button" data-toggle="modal" data-target="#edit"
+										v-on:click="findOne(customer.uid)" class="btn btn-primary">编辑</button>
+									<button type="button" v-on:click="del(customer.uid)"
+										class="btn btn-danger">删除</button>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<!-- END MAIN CONTENT -->
-		</div>
-		<!-- END MAIN -->
+			</div>
+			<!-- END MAIN -->
 		</div>
 		<div class="clearfix"></div>
 		<footer>

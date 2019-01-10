@@ -28,9 +28,10 @@
 <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="assets/scripts/klorofil-common.js"></script>
+<script src="assets/js/vue.min.js"></script>
+<script src="assets/js/vue-resource.min.js"></script>
 </head>
 <body>
-<div id="sellerInfo">
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
@@ -54,27 +55,20 @@
 				</form>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown"><a href="../index.html">商城首页</a></li>
-						<li class="dropdown"><a href="login.html">登录</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="assets/img/seller.jpg" class="img-circle" alt="Avatar">
-							<span>Seller</span>
-							<i class="icon-submenu lnr lnr-chevron-down"></i>
-							</a>
+						<!-- <li class="dropdown"><a href="../index.html">商城首页</a></li>
+						<li class="dropdown"><a href="login.html">登录</a></li> -->
+						<li class="dropdown" id="getUser"><a href="#"
+							class="dropdown-toggle" data-toggle="dropdown"> <img
+								src="assets/img/seller.jpg" class="img-circle" alt="Avatar">
+								<span v-if="user!=''">{{user}}</span> <i
+								class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i><span>个人中心</span></a></li>
-								<li>
-									<a href="changePwd.html"><i class="lnr lnr-cog"></i>
-									<span>设置</span></a>
-								</li>
-								<li>
-									<a href="#"><i class="lnr lnr-exit"></i>
-									<span>注销</span>
-									</a>
-								</li>
-							</ul>
-						</li>
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>个人中心</span></a></li>
+								<li><a href="changePwd.html"><i class="lnr lnr-cog"></i>
+										<span>设置</span></a></li>
+								<li><a href="" v-on:click="logout()"><i
+										class="lnr lnr-exit"></i> <span>注销</span></a></li>
+							</ul></li>
 					</ul>
 				</div>
 			</div>
@@ -87,8 +81,10 @@
 					<ul class="nav">
 						<li><a href="index.html" class=""><i class="lnr lnr-home"></i>
 								<span>首页</span></a></li>
-							<li><a href="productManage.html" class=""><i class="lnr lnr-file-empty"></i> <span>商品管理</span></a></li>
-							<li><a href="orderManage.html" class=""><i class="lnr lnr-pushpin"></i> <span>订单管理</span></a></li>
+						<li><a href="productManage.html" class=""><i
+								class="lnr lnr-file-empty"></i> <span>商品管理</span></a></li>
+						<li><a href="orderManage.html" class=""><i
+								class="lnr lnr-pushpin"></i> <span>订单管理</span></a></li>
 						<li><a href="#setting" data-toggle="collapse" class="active"><i
 								class="lnr lnr-cog"></i> <span>设置</span> <i
 								class="icon-submenu lnr lnr-chevron-left"></i></a>
@@ -96,42 +92,50 @@
 								<ul class="nav">
 									<li><a href="info.html" class="active">个人信息</a></li>
 									<li><a href="changePwd.html" class="">修改密码</a></li>
-									<li><a href="javascript:void(0);" onclick=javascrtpt:logout() class="">退出登录</a></li>
+									<li><a href="javascript:void(0);"
+										onclick=javascrtpt:logout() class="">退出登录</a></li>
 								</ul>
-							</div>
-						</li>
+							</div></li>
 					</ul>
 				</nav>
 			</div>
 		</div>
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
-		<div class="main">
-			<!-- MAIN CONTENT -->
-			<div class="main-content">
-				<div class="form-group">
-					<label>用户名</label>
-					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
-					<input style="width: 15%" type="text" class="form-control" v-model="seller.username" name="username" readonly unselectable="on">
+		<div id="sellerInfo">
+			<div class="main">
+				<!-- MAIN CONTENT -->
+				<div class="main-content">
+					<div class="form-group">
+						<label>用户名</label> <input style="width: 15%" type="text" id="uid"
+							v-model="admin.uid" name="uid" hidden> <input
+							style="width: 15%" type="text" class="form-control"
+							v-model="seller.username" name="username" readonly
+							unselectable="on">
+					</div>
+					<div class="form-group" id="admin">
+						<label>工商注册号</label> <input style="width: 15%" type="text"
+							id="uid" v-model="admin.uid" name="uid" hidden> <input
+							style="width: 15%" type="text" class="form-control"
+							v-model="seller.license">
+					</div>
+					<div class="form-group" id="admin">
+						<label>商铺名称</label> <input style="width: 15%" type="text" id="uid"
+							v-model="admin.uid" name="uid" hidden> <input
+							style="width: 15%" type="text" class="form-control"
+							v-model="seller.company">
+					</div>
+					<div class="form-group" id="admin">
+						<label>经营范围</label> <input style="width: 15%" type="text" id="uid"
+							v-model="admin.uid" name="uid" hidden> <input
+							style="width: 15%" type="text" class="form-control"
+							v-model="seller.scope">
+					</div>
+					<input onclick="changePwd()" type="submit" class="btn btn-primary"
+						name="修改">
 				</div>
-				<div class="form-group" id="admin">
-					<label>工商注册号</label>
-					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
-					<input style="width: 15%" type="text" class="form-control" v-model="seller.license">
-				</div>
-				<div class="form-group" id="admin">
-					<label>商铺名称</label>
-					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
-					<input style="width: 15%" type="text" class="form-control" v-model="seller.company">
-				</div>
-				<div class="form-group" id="admin">
-					<label>经营范围</label>
-					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
-					<input style="width: 15%" type="text" class="form-control" v-model="seller.scope">
-				</div>
-				<input onclick="changePwd()" type="submit" class="btn btn-primary" name="修改">
+				<!-- END MAIN CONTENT -->
 			</div>
-			<!-- END MAIN CONTENT -->
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
@@ -142,60 +146,13 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
-</div>
+	<script src="assets/js/function.js"></script>
 	<script type="text/javascript">
 		function reset() {
 			$("#password").val("")
 			$("#newPwd").val("")
 		}
-		function changePwd() {
-			var username = $("#username").val()
-			var password = $("#password").val()
-			var newPwd = $("#newPwd").val()
-			var uid = $("#sid").val()
-			$.ajax({
-				data : {
-					username : username,
-					password : password
-				},
-				dataType : "JSON",
-				isAsync : false,
-				isCache : true,
-				method : "POST",
-				url : "findByNamePwd",
-				complete : function(rst) {
-					var result = JSON.parse(rst.responseText)
-					if (result.success) {
-						$.ajax({
-							data : JSON.stringify({
-								"sid" : uid,
-								"password" : newPwd
-							}),
-							contentType : "application/json;charset=UTF-8",
-							dataType : "json",
-							isAsync : false,
-							isCache : true,
-							method : "POST",
-							url : "changePwd",
-							complete : function(rst) {
-								$("#password").val("")
-								$("#newPwd").val("")
-								var result = JSON.parse(rst.responseText)
-								if (result.success) {
-									alert("修改成功")
-								} else {
-									alert("修改失败")
-								}
-							}
-						});
-					} else {
-						$("#password").val("")
-						$("#newPwd").val("")
-						alert("原密码错误")
-					}
-				}
-			});
-		}
 	</script>
+
 </body>
 </html>

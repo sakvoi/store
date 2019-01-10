@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="Generator" content="EditPlus®">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<link rel="stylesheet" href="css/person.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/popper.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="icon" sizes="76x76" href="img/icon.png">
+<link rel="icon" type="image/png" sizes="96x96" href="img/micon.png">
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<title>订单</title>
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: #808080;
+}
+
+a:hover {
+	color: rgb(188, 188, 188);
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+	<div id="header">
+		<div class="menu" id="getUser">
+			<a v-if="user!=''"><font color=red>{{user}}</font>&nbsp;&nbsp;</a> <span
+				class="dropdown">
+				<button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+					data-toggle="dropdown"
+					style="color: #808080; background: RGB(51, 51, 51); border: 0;">设置</button>
+				<span class="caret"></span>
+				<ul class="dropdown-menu" role="menu"
+					aria-labelledby="dropdownMenu1">
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						href="#">个人中心</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						href="#">评价晒单</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						href="#">我的喜欢</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						href="#">小米账户</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						href="#" v-on:click="logout()">退出登录</a></li>
+				</ul>
+				<button type="button"
+					onclick="javascrtpt:window.location.href='shopcart.html'"
+					class="btn_g"
+					style="width: 100px; height: 40px; border: 0; background: #ff6700; color: #fff;">购物车</button>
+				<div style="clear: both;"></div>
+		</div>
+		<div class="top">
+			<a href="index.html"><img src="img/logo.png"
+				style="width: 220px; height: 80px; margin-left: 340px;"></a>
+			<div class="navbar fl-rg" id="topMenu" style="width: 1040px;">
+				<ul class="clearfix" v-for="cate in categorys">
+					<li><a href="product/index.html">{{cate.cname}}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both;"></div>
+	<div id="content">
+		<div style="height: 30px; width: 100%;"></div>
+		<div
+			style="width: auto; height: 800px; float: left; margin-left: 340px;">
+			<div style="clear: both;"></div>
+			<div class="box_left">
+				<ul class="fix">
+					<li><a href="person.html">个人中心</a></li>
+					<li><a href="order.html">我的订单</a></li>
+				</ul>
+			</div>
+			<div class="box_right">
+				<h2 style="float: left; color: #808080;">我的订单&nbsp;&nbsp;</h2>
+				<p style="line-height: 50px; color: #808080;">
+					请谨防钓鱼链接或诈骗电话，<a href="">了解更多></a>
+				</p>
+				<table class="table"
+					style="border: 1px solid #ddd; margin-top: 0px; width: 900px;"
+					border="0" cellspacing="1">
+					<thead>
+						<tr height="100px;">
+							<th width="10px;"></th>
+							<th width="200px;"><p
+									style="font-size: 1.2em; padding-top: 10px; height: 30px; color: #808080;">已收货</p>
+								<p style="color: #808080;">2018年07月27日 19:43</p></th>
+							<th><p style="color: #808080;">用户ID</p></th>
+							<th><p style="color: #808080; text-align: center;">5180727688403828{{oid}}</p></th>
+							<th><p style="color: #808080; text-align: right;">订单金额:</p></th>
+							<th width="50px;"><p style="color: #000;">totalprice&nbsp;&nbsp;元</p></th>
+							<th width="1px;"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr height="100px;" style="line-height: 80px;">
+							<td width="10px;"></td>
+							<td>图片</td>
+							<td>商品名称</td>
+							<td style="text-align: center;">数量</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					<tbody>
+				</table>
+			</div>
+			<script src="js/function.js"></script>
+		</div>
+</body>
+</html>

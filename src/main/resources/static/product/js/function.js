@@ -1,3 +1,21 @@
+var getUser = new Vue({
+	el:'#getUser',
+	data:{
+		user:null
+	},
+	methods:{
+		getUser:function(){
+			this.$http.get('/customer/getUser').then(function(res){
+				this.user=res.bodyText
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	},
+	mounted:function(){
+		this.getUser();
+	}
+});
 var topMenu = new Vue({
 	el:'#topMenu',
 	data:{

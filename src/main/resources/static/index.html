@@ -19,11 +19,13 @@ a {
 	text-decoration: none;
 	color: #808080;
 }
+
 a:hover {
 	color: #000;
 	text-decoration: none;
 }
-.menu a:hover{
+
+.menu a:hover {
 	color: #fff;
 	text-decoration: none;
 }
@@ -31,51 +33,59 @@ a:hover {
 </head>
 <body>
 	<!-- 注册 -->
-	<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	     	<h3 class="modal-title" id="modal-register-label">注册</h3>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	      </div>
-	      <div class="modal-body">
-	          <div>
-	            <label for="recipient-name" class="control-label">用户名:</label>
-	            <input type="text" class="form-control" v-model="username" placeholder="UserName">
-	          </div>
-	          <div class="form-group">
-	            <label for="recipient-name" class="control-label">密码:</label>
-	            <input type="password" class="form-control" v-model="password" placeholder="Password">
-	          </div>
-	          <div class="form-group">
-	            <label for="recipient-name" class="control-label">邮箱:</label>
-	            <input type="email" class="form-control" v-model="email" placeholder="Email">
-	          </div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-	        <button type="button" v-on:click="register()" class="btn btn-primary">注册</button>
-	      </div>
-	    </div>
-	  </div>
+	<div class="modal fade" id="register" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="modal-register-label">注册</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div>
+						<label for="recipient-name" class="control-label">用户名:</label> <input
+							type="text" class="form-control" v-model="username"
+							placeholder="UserName">
+					</div>
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">密码:</label> <input
+							type="password" class="form-control" v-model="password"
+							placeholder="Password">
+					</div>
+					<div class="form-group">
+						<label for="recipient-name" class="control-label">邮箱:</label> <input
+							type="email" class="form-control" v-model="email"
+							placeholder="Email">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+					<button type="button" v-on:click="register()"
+						class="btn btn-primary">注册</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- 注册 End -->
 	<!-- header -->
 	<div id="header">
-		<div class="menu">
-			<a href="purchase.html">购买</a>&nbsp;&nbsp;
-			<a href="shopcart.html">购物车</a>&nbsp;&nbsp;
-			<a href="seller/index.html">卖家</a>&nbsp;&nbsp;
-			<a href="admin/index.html">管理员</a>&nbsp;&nbsp;
-			<a href="product/index.html">产品</a>&nbsp;&nbsp;
-			<a href="login.html">登录</a>&nbsp;&nbsp;
-			<a href="" data-toggle="modal" data-target="#register">注册</a>
+		<div class="menu" id="getUser">
+			<a v-if="user!=''"><font color=red>{{user}}</font>&nbsp;&nbsp;</a> <a
+				v-if="user==''" href="login.html">登录</a>&nbsp;&nbsp; <a
+				v-if="user==''" href="" data-toggle="modal" data-target="#register">注册&nbsp;&nbsp;</a>
+			<a v-else v-on:click="logout()" href="javascript:void(0);">注销&nbsp;&nbsp;</a>
+			<a href="shopcart.html">购物车</a>&nbsp;&nbsp; <a href="person.html">个人中心</a>&nbsp;&nbsp;
 			<span class="dropdown">
-				<button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" style="color: #808080;">客户服务</button>
-				<span class="caret"></span>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+					data-toggle="dropdown" style="color: #808080;">其他服务</button> <span
+				class="caret"></span>
+				<ul class="dropdown-menu" role="menu"
+					aria-labelledby="dropdownMenu1">
 					<li role="presentation"><a role="menuitem" tabindex="-1"
-						href="#">帮助中心</a></li>
+						href="seller/login.html">卖家登录</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="#">售后服务</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
@@ -93,41 +103,30 @@ a:hover {
 	<div id="content">
 		<!-- header1 -->
 		<div class="head1">
-			<a href="index.html"><img src="img/logo.png" style="width:220px;height:80px;"></a>
+			<a href="index.html"><img src="img/logo.png"
+				style="width: 220px; height: 80px;"></a>
 			<div class="navbar fl-rg" id="topMenu">
 				<ul class="clearfix" v-for="cate in categorys">
-					<li><a href="#">{{cate.cname}}</a></li>
-			<!-- 		<li><a href="#">红米</a></li>
-					<li><a href="#">平板·笔记本</a></li>
-					<li><a href="#">电视</a></li>
-					<li><a href="#">盒子·影音</a></li>
-					<li><a href="#">路由器</a></li>
-					<li><a href="#">智能硬件</a></li>
-					<li><a href="#">服务社区</a></li> -->
+					<li><a :href="'product/index.html?cid='+cate.cid">{{cate.cname}}</a></li>
 				</ul>
-			</div>	
-<!-- 			<div class="ss">
-				<form method="post">
-					<input type="text" class="ss_in" placeholder="搜你想搜" />
-					<input type="submit" class="ss_bt" value="搜索" />
-				</form>
-			</div> -->
+			</div>
 		</div>
 		<!-- header1 end -->
 		<!-- 分类 -->
 		<div class="flei" id="init">
 			<div v-for="cate in categorys">
-				<div class="maintip"><a href="#"><strong style="color:#fff;">{{cate.cname}}</strong></a></div>
-				<div class="tips" >
+				<div class="maintip">
+					<a :href="'product/index.html?cid='+cate.cid"><strong
+						style="color: #fff;">{{cate.cname}}</strong></a>
+				</div>
+				<div class="tips">
 					<p v-for="cas in categoryseconds">
-						<a v-if="cate.cid==cas.cid" href="#">{{cas.csname}}</a>
+						<a v-if="cate.cid==cas.cid"
+							:href="'product/index.html?csid='+cas.csid">{{cas.csname}}</a>
 					</p>
 				</div>
-		  	</div>
-		  	<div class="maintip"></div>
-			<div class="maintip"></div>
-			<div class="maintip"></div>
-		</div> 
+			</div>
+		</div>
 		<!-- 分类 End -->
 		<!-- 轮播图 -->
 		<div class="lunbo">
@@ -152,10 +151,10 @@ a:hover {
 						<img src="img/fade4.jpg">
 					</div>
 				</div>
-				<a class="carousel-control-prev" href="#demo" data-slide="prev" style="margin-left: 16%;">
-					<span class="carousel-control-prev-icon"></span>
-				</a>
-				<a class="carousel-control-next" href="#demo" data-slide="next">
+				<a class="carousel-control-prev" href="#demo" data-slide="prev"
+					style="margin-left: 16%;"> <span
+					class="carousel-control-prev-icon"></span>
+				</a> <a class="carousel-control-next" href="#demo" data-slide="next">
 					<span class="carousel-control-next-icon"></span>
 				</a>
 			</div>
@@ -177,20 +176,36 @@ a:hover {
 				<h2 style="margin-top: 15px; font-family: '幼圆';">闪购</h2>
 				<div class="box_">
 					<div class="box_1"></div>
-					<div class="box_2"><img src="img/s1.jpg" /></div>
-					<div class="box_3"><img src="img/s2.jpg" /></div>
-					<div class="box_4"><img src="img/s3.jpg" /></div>
-					<div class="box_5"><img src="img/s4.jpg" /></div>
+					<div class="box_2">
+						<img src="img/s1.jpg" />
+					</div>
+					<div class="box_3">
+						<img src="img/s2.jpg" />
+					</div>
+					<div class="box_4">
+						<img src="img/s3.jpg" />
+					</div>
+					<div class="box_5">
+						<img src="img/s4.jpg" />
+					</div>
 				</div>
 			</div>
 			<div class="">
 				<h2 style="margin-top: 15px; font-family: '幼圆';">手机</h2>
 				<div class="box_">
 					<div class="box_1"></div>
-					<div class="box_2"><img src="img/s1.jpg" /></div>
-					<div class="box_3"><img src="img/s2.jpg" /></div>
-					<div class="box_4"><img src="img/s3.jpg" /></div>
-					<div class="box_5"><img src="img/s4.jpg" /></div>
+					<div class="box_2">
+						<img src="img/s1.jpg" />
+					</div>
+					<div class="box_3">
+						<img src="img/s2.jpg" />
+					</div>
+					<div class="box_4">
+						<img src="img/s3.jpg" />
+					</div>
+					<div class="box_5">
+						<img src="img/s4.jpg" />
+					</div>
 				</div>
 			</div>
 		</div>

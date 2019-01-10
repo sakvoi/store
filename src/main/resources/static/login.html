@@ -34,12 +34,14 @@
 				<!-- <div class="alert-close"> </div> -->
 			</div>
 			<div class="form" id="login">
-				<li>
-					<input type="text" id="username" placeholder="UserName" v-model="username" class="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'UserName';}">
-					<a href="#" class=" icon user"></a>
-				</li>
+				<li><input type="text" id="username" placeholder="UserName"
+					v-model="username" class="text" onfocus="this.value = '';"
+					onblur="if (this.value == '') {this.value = 'UserName';}">
+					<a href="#" class=" icon user"></a></li>
 				<div class="clear"></div>
-				<li><input type="password" id="password" placeholder="Password" v-model="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+				<li><input type="password" id="password" placeholder="Password"
+					v-model="password" onfocus="this.value = '';"
+					onblur="if (this.value == '') {this.value = 'Password';}">
 					<a href="#" class="icon lock"></a></li>
 				<div class="clear"></div>
 				<div class="submit">

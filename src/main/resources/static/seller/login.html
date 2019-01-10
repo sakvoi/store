@@ -11,6 +11,8 @@
 <link rel="apple-touch-icon" sizes="76x76" href="assets/img/icon.png">
 <link rel="icon" type="image/png" sizes="96x96"
 	href="assets/img/micon.png">
+<script src="assets/js/vue.min.js"></script>
+<script src="assets/js/vue-resource.min.js"></script>
 <script>
 	var __links = document.querySelectorAll('a');
 	function __linkClick(e) {
@@ -23,67 +25,42 @@
 	}
 </script>
 <script src="../js/jquery.min.js"></script>
-<script>
-	function login() {
-		var username = $("#username").val()
-		var password = $("#password").val()
-		$.ajax({
-			data : {
-				username : username,
-				password : password
-			},
-			dataType : "JSON",
-			isAsync : false,
-			isCache : true,
-			method : "POST",
-			url : "login",
-			complete : function(rst) {
-				var result = JSON.parse(rst.responseText);
-				if (result.success) {
-					location.href = "index.html"
-				} else {
-					location.href = "login.html"
-				}
-			}
-		})
-		return false;
-	}
-</script>
 </head>
 <body>
-	<!-- contact-form -->
-
-	<div class="message warning">
-		<div class="inset">
-			<a href="../index.html"><img src="../img/logo.png" /></a>
-			<div class="login-head">
-				<h1>卖家登录</h1>
-				<!-- <div class="alert-close"> </div> -->
-			</div>
-			<div class="form">
-				<li><input type="text" id="username" name="username"
-					class="text" value="Username" onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Username';}"><a
-					href="#" class=" icon user"></a></li>
-				<div class="clear"></div>
-				<li><input type="password" id="password" name="password"
-					value="Password" onfocus="this.value = '';"
-					onblur="if (this.value == '') {this.value = 'Password';}">
-					<a href="#" class="icon lock"></a></li>
-				<div class="clear"></div>
-				<div class="submit">
-					<input type="submit" onclick="login()" value="Sign in">
-					<h4>
-						<a href="index.html">返回</a>
-					</h4>
-					<h4>
-						<a href="../index.html">忘记密码 ?</a>
-					</h4>
+	<div id="login">
+		<!-- contact-form -->
+		<div class="message warning">
+			<div class="inset">
+				<a href="../index.html"><img src="../img/logo.png" /></a>
+				<div class="login-head">
+					<h1>卖家登录</h1>
+					<!-- <div class="alert-close"> </div> -->
+				</div>
+				<div class="form">
+					<li><input type="text" id="username" v-model="username"
+						class="text" value="Username" onfocus="this.value = '';"
+						onblur="if (this.value == '') {this.value = 'Username';}">
+						<a href="#" class=" icon user"></a></li>
 					<div class="clear"></div>
+					<li><input type="password" id="password" v-model="password"
+						value="Password" onfocus="this.value = '';"
+						onblur="if (this.value == '') {this.value = 'Password';}">
+						<a href="#" class="icon lock"></a></li>
+					<div class="clear"></div>
+					<div class="submit">
+						<input type="submit" v-on:click="login()" value="Sign in">
+						<h4>
+							<a href="../index.html">返回商城首页</a>
+						</h4>
+						<h4>
+							<a href="forgot.html">忘记密码 ?</a>
+						</h4>
+						<div class="clear"></div>
+					</div>
 				</div>
 			</div>
+			<div class="clear"></div>
 		</div>
-		<div class="clear"></div>
 	</div>
 	<!--- footer --->
 	<div class="footer">
@@ -91,5 +68,6 @@
 			<font color="black">Copyright &copy; 2019</font>
 		</p>
 	</div>
+	<script src="assets/js/function.js"></script>
 </body>
 </html>

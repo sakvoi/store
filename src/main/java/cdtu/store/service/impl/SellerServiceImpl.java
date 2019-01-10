@@ -114,23 +114,6 @@ public class SellerServiceImpl implements SellerService {
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
-	/**
-	 * Login
-	 */
-	@Override
-	public Result login(String username, String password) {
-		String pwd = DigestUtils.md5DigestAsHex(password.getBytes());
-		TbSellerExample example = new TbSellerExample();
-		Criteria criteria = example.createCriteria();
-		criteria.andUsernameEqualTo(username);
-		criteria.andPasswordEqualTo(pwd);
-		List<TbSeller> list = sellerMapper.selectByExample(example);
-		if (list.size() > 0) {
-			return new Result(true, "登录成功");
-		} else {
-			return new Result(false, "登录失败");
-		}
-	}
 
 	/**
 	 * findByNamePwd
@@ -149,5 +132,22 @@ public class SellerServiceImpl implements SellerService {
 			return new Result(false, "失败");
 		}
 	}
-
+	
+	/**
+	 * Login
+	 */
+	@Override
+	public Result login(String username, String password) {
+		String pwd = DigestUtils.md5DigestAsHex(password.getBytes());
+		TbSellerExample example = new TbSellerExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUsernameEqualTo(username);
+		criteria.andPasswordEqualTo(pwd);
+		List<TbSeller> list = sellerMapper.selectByExample(example);
+		if (list.size() > 0) {
+			return new Result(true, "登录成功");
+		} else {
+			return new Result(false, "登录失败");
+		}
+	}
 }
