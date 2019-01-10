@@ -52,6 +52,8 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public void add(TbAdmin admin) {
+		String password = DigestUtils.md5DigestAsHex(admin.getPassword().getBytes());
+		admin.setPassword(password);
 		adminMapper.insert(admin);
 	}
 
@@ -103,6 +105,9 @@ public class AdminServiceImpl implements AdminService {
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
+	/**
+	 * Login
+	 */
 	@Override
 	public Result login(String username, String password) {
 		String pwd = DigestUtils.md5DigestAsHex(password.getBytes());
@@ -123,10 +128,11 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public Result findByNamePwd(String username, String password) {
+		String pwd = DigestUtils.md5DigestAsHex(password.getBytes());
 		TbAdminExample example = new TbAdminExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andUsernameEqualTo(username);
-		criteria.andPasswordEqualTo(password);
+		criteria.andPasswordEqualTo(pwd);
 		List<TbAdmin> list = adminMapper.selectByExample(example);
 		if (list.size() > 0) {
 			return new Result(true, "成功");
@@ -137,6 +143,8 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void changePwd(TbAdmin admin) {
+		String password = DigestUtils.md5DigestAsHex(admin.getPassword().getBytes());
+		admin.setPassword(password);
 		adminMapper.updateByPrimaryKeySelective(admin);
 	}
 

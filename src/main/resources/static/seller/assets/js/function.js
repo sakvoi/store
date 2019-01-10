@@ -1,3 +1,62 @@
+var sellerInfo = new Vue({
+	el : '#sellerInfo',
+	data:{
+		user : [],
+	},
+	methods : {
+		findOne:function(){
+			this.$http.get('/customer/findOne',{params:{id:1}},{emulateJSON: true}).then(function(res){
+				this.user = res.body;
+			});
+		}
+	},
+	mounted:function(){
+		this.findOne();
+	}
+});
+var changePwd = new Vue({
+	el:'#changePwd',
+	data:{
+		id : null,
+		user : [],
+	},
+	methods:{
+		getInfo:function(){
+			this.$http.get('/customer/findOne',{params:{id:1}},{emulateJSON: true}).then(function(res){
+				this.user = res.body;
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
+		updatePwd:function(){
+			var password = $("#password").val();
+			var newPwd = $("#newPwd").val();
+			this.$http.get('/customer/findByNamePwd',{params:{username:this.user.username,password:password}},{emulateJSON: true}).then(function(res){
+				if(res.body.success){
+					this.$http.post('/customer/update',{uid:this.user.uid,username:this.user.username,password:newPwd}).then(function(res){
+						if (res.body.success) {
+							alert("修改成功");
+							location.href = "changePwd.html"
+						} else {
+							alert("修改失败");
+							location.href = "changePwd.html"
+						}
+					},function(){
+						console.log('请求失败处理');
+					});
+				}else{
+					alert("原密码错误");
+					location.href = "changePwd.html"
+				}
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	},
+	mounted:function(){
+		this.getInfo();
+	}
+});
 var orderManage = new Vue({
 	el:'#orderManage',
 	data:{
@@ -13,7 +72,7 @@ var orderManage = new Vue({
 		}
 	},
 	mounted:function(){
-		this.findAll()
+		this.findAll();
 	}
 });
 var productManage = new Vue({

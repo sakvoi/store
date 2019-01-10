@@ -52,6 +52,8 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public void add(TbCustomer customer) {
+		String password = DigestUtils.md5DigestAsHex(customer.getPassword().getBytes());
+		customer.setPassword(password);
 		customerMapper.insert(customer);
 	}
 
@@ -60,6 +62,8 @@ public class CustomerServiceImpl implements CustomerService {
 	 */
 	@Override
 	public void update(TbCustomer customer) {
+		String password = DigestUtils.md5DigestAsHex(customer.getPassword().getBytes());
+		customer.setPassword(password);
 		customerMapper.updateByPrimaryKey(customer);
 	}
 
@@ -87,10 +91,8 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public PageResult findPage(TbCustomer customer, int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
-
 		TbCustomerExample example = new TbCustomerExample();
 		Criteria criteria = example.createCriteria();
-
 		if (customer != null) {
 			if (customer.getUsername() != null && customer.getUsername().length() > 0) {
 				criteria.andUsernameLike("%" + customer.getUsername() + "%");
@@ -119,9 +121,7 @@ public class CustomerServiceImpl implements CustomerService {
 			if (customer.getCode() != null && customer.getCode().length() > 0) {
 				criteria.andCodeLike("%" + customer.getCode() + "%");
 			}
-
 		}
-
 		Page<TbCustomer> page = (Page<TbCustomer>) customerMapper.selectByExample(example);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
@@ -154,4 +154,18 @@ public class CustomerServiceImpl implements CustomerService {
 		customerMapper.insertSelective(customer);
 	}
 
+	@Override
+	public Result findByNamePwd(String username, String password) {
+		String pwd = DigestUtils.md5DigestAsHex(password.getBytes());
+		TbCustomerExample customerExample = new TbCustomerExample();
+		Criteria criteria = customerExample.createCriteria();
+		criteria.andUsernameEqualTo(username);
+		criteria.andPasswordEqualTo(pwd);
+		List<TbCustomer> list = customerMapper.selectByExample(customerExample);
+		if (list.size() > 0) {
+			return new Result(true, "登录成功");
+		} else {
+			return new Result(false, "登录失败");
+		}
+	}
 }

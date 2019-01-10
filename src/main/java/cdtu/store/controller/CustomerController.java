@@ -142,4 +142,9 @@ public class CustomerController {
 		return customerService.login(username, password);
 	}
 
+	@RequestMapping("/findByNamePwd")
+	public Result findByNamePwd(String username, String password) {
+		return customerService.findByNamePwd(username, password);
+	}
+
 }

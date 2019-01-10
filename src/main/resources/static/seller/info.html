@@ -28,29 +28,9 @@
 <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="assets/scripts/klorofil-common.js"></script>
-<script>
-	$.ajax({
-		data : {
-			id : 1,
-		},
-		dataType : "JSON",
-		isAsync : false,
-		isCache : true,
-		method : "GET",
-		url : "/seller/findOne",
-		complete : function(rst) {
-			var result = JSON.parse(rst.responseText)
-			var table = new Vue({
-				el : '#seller',
-				data : {
-					admin : result,
-				}
-			});
-		}
-	});
-</script>
 </head>
 <body>
+<div id="sellerInfo">
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
@@ -129,7 +109,7 @@
 		<div class="main">
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
-				<div class="form-group" id="seller">
+				<div class="form-group">
 					<label>用户名</label>
 					<input style="width: 15%" type="text" id="uid" v-model="admin.uid" name="uid" hidden>
 					<input style="width: 15%" type="text" class="form-control" v-model="seller.username" name="username" readonly unselectable="on">
@@ -162,6 +142,7 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
+</div>
 	<script type="text/javascript">
 		function reset() {
 			$("#password").val("")

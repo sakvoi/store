@@ -2,6 +2,7 @@ package cdtu.store.service;
 import java.util.List;
 
 import cdtu.store.pojo.PageResult;
+import cdtu.store.pojo.Result;
 import cdtu.store.pojo.TbSeller;
 /**
  * 服务层接口
@@ -57,5 +58,9 @@ public interface SellerService {
 	 * @return
 	 */
 	public PageResult findPage(TbSeller seller, int pageNum,int pageSize);
+
+	public Result findByNamePwd(String username, String password);
+
+	public Result login(String username, String password);
 	
 }

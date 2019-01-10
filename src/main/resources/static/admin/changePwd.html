@@ -25,6 +25,7 @@
 <script src="assets/js/vue-resource.min.js"></script>
 </head>
 <body>
+<div id="changePwd">
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<!-- NAVBAR -->
@@ -56,9 +57,8 @@
 								<i class="icon-submenu lnr lnr-chevron-down"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i><span>个人中心</span></a></li>
-								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
-								<li><a href="changePwd.html"><i class="lnr lnr-cog"></i><span>设置</span></a></li>
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>个人中心</span></a></li>
+								<li><a href="changePwd.html"><i class="lnr lnr-cog"></i> <span>设置</span></a></li>
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>注销</span></a></li>
 							</ul>
 						</li>
@@ -82,27 +82,24 @@
 							</a>
 							<div id="subPages" class="collapse">
 								<ul class="nav">
-									<li><a href="category.html" class="">一级分类</a></li>
-									<li><a href="categorySecond.html" class="">二级分类</a></li>
-								</ul>
+								<li><a href="category.html" class="">一级分类</a></li>
+								<li><a href="categorySecond.html" class="">二级分类</a></li></ul>
 							</div>
 						</li>
 						<li><a href="#customer" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>用户管理</span>
 								<i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="customer" class="collapse">
 								<ul class="nav">
-									<li><a href="customerList.html" class="">用户列表</a></li>
-									<li><a href="sellerList.html" class="">卖家列表</a></li>
-								</ul>
+								<li><a href="customerList.html" class="">用户列表</a></li>
+								<li><a href="sellerList.html" class="">卖家列表</a></li></ul>
 							</div>
 						</li>
 						<li><a href="#setting" data-toggle="collapse" class="active"><i class="lnr lnr-cog"></i> <span>设置</span>
 							<i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="setting" class="collapse in">
 								<ul class="nav">
-									<li><a href="changePwd.html" class="active">修改密码</a></li>
-									<li><a href="javascript:void(0);" onclick=javascrtpt:logout() class="">退出登录</a></li>
-								</ul>
+								<li><a href="changePwd.html" class="active">修改密码</a></li>
+								<li><a href="javascript:void(0);" onclick=javascrtpt:logout() class="">退出登录</a></li></ul>
 							</div>
 						</li>
 					</ul>
@@ -112,23 +109,23 @@
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->
 		<div class="main">
-			<!-- MAIN CONTENT -->
-			<div class="main-content" id="changePwd">
-				<div class="form-group">
-					<label>用户名</label>
-					<input style="width: 15%" type="text" id="username" class="form-control" v-model="admin.username" name="username" readonly unselectable="on">
-				</div>
-				<div class="form-group">
-					<label>原密码</label> <input style="width: 15%" type="password" id="password" name="password" class="form-control" placeholder="原密码">
-				</div>
-				<div class="form-group">
-					<label>新密码</label>
-					<input style="width: 15%" type="password" id="newPwd" name="newpassword" class="form-control" placeholder="新密码">
-				</div>
-				<input v-on:click="updatePwd()" type="submit" class="btn btn-primary" name="修改">&nbsp;&nbsp;&nbsp;&nbsp; 
-				<input onclick="reset()" type="reset" class="btn btn-default" name="重置">
+		<!-- MAIN CONTENT -->
+		<div class="main-content">
+			<div class="form-group">
+				<label>用户名</label>
+				<input style="width: 15%" type="text" class="form-control" v-model="user.username" readonly unselectable="on">
 			</div>
-			<!-- END MAIN CONTENT -->
+			<div class="form-group">
+				<label>原密码</label> <input style="width: 15%" id="password" type="password" class="form-control" placeholder="原密码">
+			</div>
+			<div class="form-group">
+				<label>新密码</label>
+				<input style="width: 15%" type="password" id="newPwd" class="form-control" placeholder="新密码">
+			</div>
+			<input v-on:click="updatePwd()" type="submit" class="btn btn-primary" name="修改">&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input onclick="reset()" type="reset" class="btn btn-default" name="重置">
+		</div>
+		<!-- END MAIN CONTENT -->
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
@@ -139,6 +136,7 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
+</div>
 	<script type="text/javascript">
 		function reset() {
 			$("#password").val("")

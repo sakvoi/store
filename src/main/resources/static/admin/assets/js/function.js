@@ -2,27 +2,38 @@
  * changePwd
  */
 var changePwd = new Vue({
-	el:'changePwd',
+	el:'#changePwd',
 	data:{
 		id : null,
-		admin : []
+		user : [],
 	},
 	methods:{
 		getInfo:function(){
 			this.$http.get('/admin/findOne',{params:{id:1}},{emulateJSON: true}).then(function(res){
-				this.admin = res.body
+				this.user = res.body;
 			},function(){
 				console.log('请求失败处理');
 			});
 		},
 		updatePwd:function(){
-			this.$http.post('/admin/update',{admin:this.admin}).then(function(res){
-				if (res.body.success) {
-					alert("修改成功");
-					location.href = "index.html"
-				} else {
-					alert("修改失败");
-					location.href = "login.html"
+			var password = $("#password").val();
+			var newPwd = $("#newPwd").val();
+			this.$http.get('/admin/findByNamePwd',{params:{username:this.user.username,password:password}},{emulateJSON: true}).then(function(res){
+				if(res.body.success){
+					this.$http.post('/admin/update',{uid:this.user.uid,username:this.user.username,password:newPwd}).then(function(res){
+						if (res.body.success) {
+							alert("修改成功");
+							location.href = "changePwd.html"
+						} else {
+							alert("修改失败");
+							location.href = "changePwd.html"
+						}
+					},function(){
+						console.log('请求失败处理');
+					});
+				}else{
+					alert("原密码错误");
+					location.href = "changePwd.html"
 				}
 			},function(){
 				console.log('请求失败处理');
@@ -246,6 +257,7 @@ var categorysecond = new Vue({
 	el:'#categorysecond',
 	data:{
 		categoryseconds :  null,
+		categorys : null,
 		csecondEdit : [],
 		category : null
 	},
@@ -297,7 +309,12 @@ var categorysecond = new Vue({
 		},
 		findAll:function(){
 			this.$http.get('/categorysecond/findAll').then(function(res){
-				this.categoryseconds=res.body
+				this.categoryseconds=res.body;
+				this.$http.get('/category/findAll').then(function(res){
+					this.categorys=res.body
+				},function(){
+					console.log('请求失败处理');
+				});
 			},function(){
 				console.log('请求失败处理');
 			});
