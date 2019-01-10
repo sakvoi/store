@@ -76,7 +76,7 @@
 					<span>首页</span></a></li>
 					<li>
 						<a href="#subPages" data-toggle="collapse" class="">
-						<i class="lnr lnr-file-empty"></i><span>分类</span> 
+						<i class="lnr lnr-file-empty"></i> <span>分类</span> 
 						<i class="icon-submenu lnr lnr-chevron-left"></i></a>
 						<div id="subPages" class="collapse">
 						<ul class="nav">
@@ -124,7 +124,7 @@
 				<div class="modal-body" id="editModel">
 					<div>
 						<label for="recipient-name" class="control-label">姓名:</label>
-						<input type="text" class="form-control" v-model="seller.username" id="name" placeholder="Name">
+						<input type="text" class="form-control" v-model="seller.username" id="name" placeholder="Name" readonly unselectable="on">
 					</div>
 					<div>
 						<label for="recipient-name" class="control-label">商铺名称</label>

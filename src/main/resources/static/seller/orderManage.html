@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh">
 <head>
-	<title>主页</title>
+	<title>订单管理</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -25,6 +25,7 @@
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
 	<script src="assets/js/vue.min.js"></script>
+	<script src="assets/js/vue-resource.min.js"></script>
 </head>
 
 <body>
@@ -54,7 +55,10 @@
 							<a href="login.html">登录</a>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/admin.jpg" class="img-circle" alt="Avatar"> <span>Kira</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="assets/img/seller.jpg" class="img-circle" alt="Avatar">
+							<span>Seller</span>
+							<i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>个人中心</span></a></li>
 								<!--<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>-->
@@ -72,29 +76,14 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>首页</span></a></li>
-						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>分类</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
-								<ul class="nav">
-									<li><a href="category.html" class="">一级分类</a></li>
-									<li><a href="categorySecond.html" class="">二级分类</a></li>
-								</ul>
-							</div>
-						</li>
-						<li>
-							<a href="#customer" data-toggle="collapse" class="collapsed"><i class="lnr lnr-user"></i> <span>用户管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="customer" class="collapse ">
-								<ul class="nav">
-									<li><a href="customerList.html" class="">用户列表</a></li>
-									<li><a href="sellerList.html" class="">卖家列表</a></li>
-								</ul>
-							</div>
-						</li>
+						<li><a href="index.html" class=""><i class="lnr lnr-home"></i> <span>首页</span></a></li>
+						<li><a href="productManage.html" class=""><i class="lnr lnr-file-empty"></i> <span>商品管理</span></a></li>
+						<li><a href="orderManage.html" class="active"><i class="lnr lnr-pushpin"></i> <span>订单管理</span></a></li>
 						<li>
 							<a href="#setting" data-toggle="collapse" class="collapsed"><i class="lnr lnr-cog"></i> <span>设置</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="setting" class="collapse ">
 								<ul class="nav">
+									<li><a href="info.html" class="">个人信息</a></li>
 									<li><a href="changePwd.html" class="">修改密码</a></li>
 									<li><a href="javascript:void(0);" onclick=javascrtpt:logout() class="">退出登录</a></li>
 								</ul>
@@ -105,18 +94,69 @@
 			</div>
 		</div>
 		<!-- END LEFT SIDEBAR -->
-		<!-- MAIN -->
-		<div class="main">
-			<div class="main-content">
-				<div class="form-group" align="center">
-					<button name="category" class="btn btn-danger" onclick=javascript:category()>分类管理</button>
-					<button name="customer" class="btn btn-danger" onclick=javascript:customer()>用户列表</button>
-					<button name="seller" class="btn btn-danger" onclick=javascript:seller()>卖家列表</button>
-					<button name="changePwd" class="btn btn-danger" onclick=javascript:changePwd()>修改密码</button>
+		<div id="orderManage">
+		<!-- edit -->
+		<div class="modal fade" id="detail" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="modal-register-label">详情</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div>
+							<label for="recipient-name" class="control-label">名称:</label>
+							<input type="text" class="form-control" id="" placeholder="名称">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+						<button type="button" v-on:click="update()" class="btn btn-primary">修改</button>
+					</div>
 				</div>
 			</div>
 		</div>
+		<!-- end edit -->
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="form-group">
+					<table class="table">
+						<tr>
+							<th>#</th>
+							<th style="width:250px">订单日期</th>
+							<th>总价</th>
+							<th>订单状态</th>
+							<th>收货人姓名</th>
+							<th>收货人电话</th>
+							<th>收货人地址</th>
+							<th>操作</th>
+						</tr>
+						<tr v-for="(order,index) in orders">
+							<td>{{index+1}}</td>
+							<td>{{order.orderdate}}</td>
+							<td>{{order.totalprice}}￥</td>
+							<td v-if="order.status==0">未发货</td>
+							<td v-else>已发货</td>
+							<td>{{order.name}}</td>
+							<td>{{order.tel}}</td>
+							<td>{{order.address}}</td>
+							<td>
+								<button data-toggle="modal" data-target="#detail" v-on:click="findOne()" type="button" class="btn btn-primary">详情</button>
+								<button type="button" v-on:click="del()" class="btn btn-danger">删除</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
 		<!-- END MAIN -->
+		</div>
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
@@ -125,23 +165,6 @@
 		</footer>
 	</div>
 	<!-- END WRAPPER -->
-	<script>
-		function category(){
-			window.location.href="category.html";
-		};
-		function customer(){
-			window.location.href="customerList.html";
-		};
-		function seller(){
-			window.location.href="sellerList.html";
-		};
-		function changePwd(){
-			window.location.href="changePwd.html";
-		};
-		function logout(){
-			alert("成功")
-			window.location.href="login.html";
-		};
-	</script>
+	<script src="assets/js/function.js"></script>
 </body>
 </html>

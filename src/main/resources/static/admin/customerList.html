@@ -119,11 +119,11 @@
 						<div class="modal-body" id="editModel">
 							<div>
 								<label for="recipient-name" class="control-label">用户名:</label>
-								<input type="text" class="form-control" v-model="user.username" placeholder="用户名">
+								<input type="text" class="form-control" v-model="user.username" placeholder="用户名" readonly unselectable="on">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">真实姓名:</label>
-								<input type="text" class="form-control" v-model="user.realname" placeholder="真实姓名">
+								<input type="text" class="form-control" v-model="user.realname" placeholder="真实姓名" readonly unselectable="on">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">性别:</label>
@@ -140,15 +140,15 @@
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">身份证号:</label>
-								<input type="text" class="form-control" v-model="user.idcard" placeholder="身份证号">
+								<input type="text" class="form-control" v-model="user.idcard" placeholder="身份证号" readonly unselectable="on">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">邮箱:</label>
-								<input type="text" class="form-control" v-model="user.email" id="email" placeholder="邮箱">
+								<input type="text" class="form-control" v-model="user.email" id="email" placeholder="邮箱" readonly unselectable="on">
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">联系电话:</label>
-								<input type="text" class="form-control" v-model="user.tel" placeholder="联系电话">
+								<input type="text" class="form-control" v-model="user.tel" placeholder="联系电话" >
 							</div>
 							<div>
 								<label for="recipient-name" class="control-label">地址:</label>

@@ -1,3 +1,21 @@
+var orderManage = new Vue({
+	el:'#orderManage',
+	data:{
+		orders : null
+	},
+	methods:{
+		findAll:function(){
+			this.$http.get('/order/findAll').then(function(res){
+				this.orders = res.body
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	},
+	mounted:function(){
+		this.findAll()
+	}
+});
 var productManage = new Vue({
 	el: '#productManage',
 	data:{
@@ -20,7 +38,7 @@ var productManage = new Vue({
 		},
 		findAll:function(){
 			this.$http.get('/product/findAll').then(function(res){
-				this.products = res.body
+				this.products = res.body;
 			},function(){
 				console.log('请求失败处理');
 			});

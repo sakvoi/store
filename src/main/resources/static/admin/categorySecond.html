@@ -116,7 +116,7 @@
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h3 class="modal-title" id="modal-register-label">添加</h3>
+							<h3 class="modal-title" id="modal-register-label" v-on:click="findCategory()">添加</h3>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -129,7 +129,7 @@
 							<div>
 								<label for="recipient-name" class="control-label">一级分类:</label>
 								<select class="form-control">
-									<option>111</option>
+									<option v-for="cate in category" >{{cate.cname}}</option>
 								</select>
 							</div>
 						</div>
@@ -178,7 +178,7 @@
 				<!-- MAIN CONTENT -->
 				<div class="main-content">
 					<div class="form-group">
-						<button type="button" data-toggle="modal" data-target="#add" class="btn btn-success">添加</button>
+						<button type="button" data-toggle="modal" data-target="#add" v-on:click="findCategory()" class="btn btn-success">添加</button>
 					</div>
 					<div class="form-group">
 						<table class="table">

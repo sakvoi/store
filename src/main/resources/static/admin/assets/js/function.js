@@ -250,6 +250,13 @@ var categorysecond = new Vue({
 		category : null
 	},
 	methods:{
+		findCategory:function(){
+			this.$http.get('/category/findAll').then(function(res){
+				this.category=res.body
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
 		update:function(){
 			var cname = $("#cnameEdit").val();
 			this.$http.get('/category/findByName?cname='+cname).then(function(res){
