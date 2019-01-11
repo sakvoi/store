@@ -31,7 +31,10 @@ public class OrderController {
 		return orderService.findAll();
 	}
 	
-	
+	@RequestMapping("/findByUid")
+	public List<TbOrder> findByUid(Integer uid){
+		return orderService.findByUid(uid);
+	}
 	/**
 	 * 返回全部列表
 	 * @return

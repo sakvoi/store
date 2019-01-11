@@ -78,28 +78,38 @@ a:hover {
 					<li><a href="order.html">我的订单</a></li>
 				</ul>
 			</div>
-			<div class="box_right">
+			<div class="box_right" id="orderDetail">
 				<h2 style="float: left; color: #808080;">我的订单&nbsp;&nbsp;</h2>
 				<p style="line-height: 50px; color: #808080;">
 					请谨防钓鱼链接或诈骗电话，<a href="">了解更多></a>
 				</p>
 				<table class="table"
 					style="border: 1px solid #ddd; margin-top: 0px; width: 900px;"
-					border="0" cellspacing="1">
+					border="0" cellspacing="1" v-for="order in orders">
 					<thead>
 						<tr height="100px;">
 							<th width="10px;"></th>
 							<th width="200px;"><p
-									style="font-size: 1.2em; padding-top: 10px; height: 30px; color: #808080;">已收货</p>
-								<p style="color: #808080;">2018年07月27日 19:43</p></th>
-							<th><p style="color: #808080;">用户ID</p></th>
-							<th><p style="color: #808080; text-align: center;">5180727688403828{{oid}}</p></th>
+									style="font-size: 1.2em; padding-top: 10px; height: 30px; color: #808080;"
+									v-if="order.status==0">未发货</p>
+								<p
+									style="font-size: 1.2em; padding-top: 10px; height: 30px; color: #808080;"
+									v-if="order.status==1">已发货</p>
+								<p style="color: #808080;" v-text="calDate(order.orderdate)"></p></th>
+							<th><p style="color: #808080;">收货人:</p></th>
+							<th width="30px;"><p style="color: #000;">{{order.name}}</p></th>
+							<th><p style="color: #808080; text-align: center;">地址:</p></th>
+							<th width="150px;"><p style="color: #000;">{{order.address}}</p></th>
 							<th><p style="color: #808080; text-align: right;">订单金额:</p></th>
-							<th width="50px;"><p style="color: #000;">totalprice&nbsp;&nbsp;元</p></th>
+							<th width="50px;"><p style="color: #000;">{{order.totalprice}}&nbsp;&nbsp;元</p></th>
+							<th><p style="color: #808080; text-align: right;">
+									<button data-toggle="modal" data-target="#detail"
+										class="btn btn-primary">详情</button>
+								</p></th>
 							<th width="1px;"></th>
 						</tr>
 					</thead>
-					<tbody>
+					<!-- <tbody>
 						<tr height="100px;" style="line-height: 80px;">
 							<td width="10px;"></td>
 							<td>图片</td>
@@ -109,10 +119,48 @@ a:hover {
 							<td></td>
 							<td></td>
 						</tr>
-					<tbody>
+					<tbody> -->
 				</table>
+				<!-- edit -->
+				<div class="modal fade" id="detail" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title" id="modal-register-label">详情</h3>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<table class="table">
+									<tr>
+										<th>#</th>
+										<th>商品名称</th>
+										<th>总价</th>
+										<th>数量</th>
+									</tr>
+									<tr v-for="(orderitem,index) in orderitems">
+										<td>{{index+1}}</td>
+										<td>{{orderitem.pid}}</td>
+										<td>{{orderitem.totalprice}}￥</td>
+										<td>{{orderitem.count}}</td>
+									</tr>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">取消</button>
+								<button type="button" v-on:click="update()"
+									class="btn btn-primary">发货</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end edit -->
 			</div>
-			<script src="js/function.js"></script>
 		</div>
+		<script src="js/function.js"></script>
 </body>
 </html>

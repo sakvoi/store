@@ -34,7 +34,14 @@ public class ProductController {
 		}
 		return products;
 	}
-	
+	@RequestMapping("/findBySid")
+	public List<TbProduct> findBySid(Integer sid){
+		List<TbProduct> products = productService.findBySid(sid);
+		for (TbProduct product : products) {
+			product.setImage("../product/images/" + product.getImage());
+		}
+		return products;
+	}
 	/**
 	 * 返回全部列表
 	 * @return

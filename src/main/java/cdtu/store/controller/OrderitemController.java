@@ -31,6 +31,10 @@ public class OrderitemController {
 		return orderitemService.findAll();
 	}
 	
+	@RequestMapping("/findByOid")
+	public List<TbOrderitem> findByOid(Integer oid){
+		return orderitemService.findByOid(oid);
+	}
 	
 	/**
 	 * 返回全部列表

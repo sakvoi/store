@@ -95,6 +95,12 @@
     from tb_product
     where pid = #{pid,jdbcType=INTEGER}
   </select>
+  <select id="findBySid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_product
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from tb_product
     where pid = #{pid,jdbcType=INTEGER}

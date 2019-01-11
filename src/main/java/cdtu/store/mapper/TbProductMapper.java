@@ -17,6 +17,8 @@ public interface TbProductMapper {
     int insertSelective(TbProduct record);
 
     List<TbProduct> selectByExample(TbProductExample example);
+    
+    List<TbProduct> findBySid(Integer sid);
 
     TbProduct selectByPrimaryKey(Integer pid);
 

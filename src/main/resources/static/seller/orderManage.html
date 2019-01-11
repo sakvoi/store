@@ -123,15 +123,25 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<div>
-								<label for="recipient-name" class="control-label">名称:</label> <input
-									type="text" class="form-control" id="" placeholder="名称">
-							</div>
+							<table class="table">
+								<tr>
+									<th>#</th>
+									<th>商品名称</th>
+									<th>总价</th>
+									<th>数量</th>
+								</tr>
+								<tr v-for="(orderitem,index) in orderitems">
+									<td>{{index+1}}</td>
+									<td>{{orderitem.pid}}</td>
+									<td>{{orderitem.totalprice}}￥</td>
+									<td>{{orderitem.count}}</td>
+								</tr>
+							</table>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
 							<button type="button" v-on:click="update()"
-								class="btn btn-primary">修改</button>
+								class="btn btn-primary">发货</button>
 						</div>
 					</div>
 				</div>
@@ -163,8 +173,8 @@
 								<td>{{order.tel}}</td>
 								<td>{{order.address}}</td>
 								<td>
-									<button data-toggle="modal" data-target="#detail"
-										v-on:click="findOne()" type="button" class="btn btn-primary">详情</button>
+									<button data-toggle="modal" data-target="#detail" type="button"
+										v-on:click="findByOid(order.oid)" class="btn btn-primary">详情</button>
 									<button type="button" v-on:click="del()" class="btn btn-danger">删除</button>
 								</td>
 							</tr>

@@ -1,4 +1,5 @@
 package cdtu.store.service.impl;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import cdtu.store.service.ProductService;
 
 /**
  * 服务实现层
+ * 
  * @author Administrator
  *
  */
@@ -24,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private TbProductMapper productMapper;
-	
+
 	/**
 	 * 查询全部
 	 */
@@ -32,14 +34,18 @@ public class ProductServiceImpl implements ProductService {
 	public List<TbProduct> findAll() {
 		return productMapper.selectByExample(null);
 	}
-
+	
+	@Override
+	public List<TbProduct> findBySid(Integer sid) {
+		return productMapper.findBySid(sid);
+	}
 	/**
 	 * 按分页查询
 	 */
 	@Override
 	public PageResult findPage(int pageNum, int pageSize) {
-		PageHelper.startPage(pageNum, pageSize);		
-		Page<TbProduct> page=   (Page<TbProduct>) productMapper.selectByExample(null);
+		PageHelper.startPage(pageNum, pageSize);
+		Page<TbProduct> page = (Page<TbProduct>) productMapper.selectByExample(null);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
 
@@ -48,25 +54,25 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	public void add(TbProduct product) {
-		productMapper.insert(product);		
+		productMapper.insert(product);
 	}
 
-	
 	/**
 	 * 修改
 	 */
 	@Override
-	public void update(TbProduct product){
+	public void update(TbProduct product) {
 		productMapper.updateByPrimaryKey(product);
-	}	
-	
+	}
+
 	/**
 	 * 根据ID获取实体
+	 * 
 	 * @param id
 	 * @return
 	 */
 	@Override
-	public TbProduct findOne(Integer id){
+	public TbProduct findOne(Integer id) {
 		return productMapper.selectByPrimaryKey(id);
 	}
 
@@ -75,40 +81,35 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	public void delete(Integer[] ids) {
-		for(Integer id:ids){
+		for (Integer id : ids) {
 			productMapper.deleteByPrimaryKey(id);
-		}		
+		}
 	}
-	
-	
-		@Override
+
+	@Override
 	public PageResult findPage(TbProduct product, int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
-		
-		TbProductExample example=new TbProductExample();
+		TbProductExample example = new TbProductExample();
 		Criteria criteria = example.createCriteria();
-		
-		if(product!=null){			
-						if(product.getPname()!=null && product.getPname().length()>0){
-				criteria.andPnameLike("%"+product.getPname()+"%");
+		if (product != null) {
+			if (product.getPname() != null && product.getPname().length() > 0) {
+				criteria.andPnameLike("%" + product.getPname() + "%");
 			}
-			if(product.getImage()!=null && product.getImage().length()>0){
-				criteria.andImageLike("%"+product.getImage()+"%");
+			if (product.getImage() != null && product.getImage().length() > 0) {
+				criteria.andImageLike("%" + product.getImage() + "%");
 			}
-			if(product.getDescs()!=null && product.getDescs().length()>0){
-				criteria.andDescsLike("%"+product.getDescs()+"%");
+			if (product.getDescs() != null && product.getDescs().length() > 0) {
+				criteria.andDescsLike("%" + product.getDescs() + "%");
 			}
-			if(product.getPcode()!=null && product.getPcode().length()>0){
-				criteria.andPcodeLike("%"+product.getPcode()+"%");
+			if (product.getPcode() != null && product.getPcode().length() > 0) {
+				criteria.andPcodeLike("%" + product.getPcode() + "%");
 			}
-			if(product.getStatus()!=null && product.getStatus().length()>0){
-				criteria.andStatusLike("%"+product.getStatus()+"%");
+			if (product.getStatus() != null && product.getStatus().length() > 0) {
+				criteria.andStatusLike("%" + product.getStatus() + "%");
 			}
-	
 		}
-		
-		Page<TbProduct> page= (Page<TbProduct>)productMapper.selectByExample(example);		
+		Page<TbProduct> page = (Page<TbProduct>) productMapper.selectByExample(example);
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
 }

@@ -57,5 +57,7 @@ public interface ProductService {
 	 * @return
 	 */
 	public PageResult findPage(TbProduct product, int pageNum,int pageSize);
+
+	public List<TbProduct> findBySid(Integer sid);
 	
 }

@@ -95,5 +95,10 @@ public class OrderitemServiceImpl implements OrderitemService {
 		Page<TbOrderitem> page= (Page<TbOrderitem>)orderitemMapper.selectByExample(example);		
 		return new PageResult(page.getTotal(), page.getResult());
 	}
+
+		@Override
+		public List<TbOrderitem> findByOid(Integer oid) {
+			return orderitemMapper.findByOid(oid);
+		}
 	
 }

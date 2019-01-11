@@ -1,3 +1,34 @@
+var orderDetail = new Vue({
+	el:'#orderDetail',
+	data:{
+		orders:null,
+		orderitems:null
+	},
+	methods:{
+		calDate:function(time){
+			var d = new Date(time);
+			var times=d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds(); 
+			return times;
+		},
+		findByUid:function(){
+			this.$http.get('/order/findByUid?uid=1').then(function(res){
+				this.orders = res.body
+			},function(){
+				console.log('请求失败处理');
+			});
+		},
+		findByOid:function(oid){
+			this.$http.get('/orderitem/findByOid?oid='+oid).then(function(res){
+				this.orderitems = res.body
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	},
+	mounted:function(){
+		this.findByUid();
+	}
+});
 var getUser = new Vue({
 	el:'#getUser',
 	data:{
@@ -115,3 +146,21 @@ var register = new Vue({
 		}
 	}
 });
+var personInfo = new Vue({
+	el:'#personInfo',
+	data:{
+		customer:null
+	},
+	methods:{
+		findOne:function(){
+			this.$http.get('/customer/findOne?id=1').then(function(res){
+				this.customer=res.body
+			},function(){
+				console.log('请求失败处理');
+			});
+		}
+	},
+	mounted:function(){
+		this.findOne();
+	}
+})

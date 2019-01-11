@@ -57,5 +57,7 @@ public interface OrderService {
 	 * @return
 	 */
 	public PageResult findPage(TbOrder order, int pageNum,int pageSize);
+
+	public List<TbOrder> findByUid(Integer uid);
 	
 }

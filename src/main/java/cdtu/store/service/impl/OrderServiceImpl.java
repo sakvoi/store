@@ -32,7 +32,11 @@ public class OrderServiceImpl implements OrderService {
 	public List<TbOrder> findAll() {
 		return orderMapper.selectByExample(null);
 	}
-
+	
+	@Override
+	public List<TbOrder> findByUid(Integer uid) {
+		return orderMapper.findByUid(uid);
+	}
 	/**
 	 * 按分页查询
 	 */

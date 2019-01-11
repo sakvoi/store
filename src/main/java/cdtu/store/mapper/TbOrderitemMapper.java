@@ -6,25 +6,27 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TbOrderitemMapper {
-    int countByExample(TbOrderitemExample example);
+	int countByExample(TbOrderitemExample example);
 
-    int deleteByExample(TbOrderitemExample example);
+	int deleteByExample(TbOrderitemExample example);
 
-    int deleteByPrimaryKey(Integer itemid);
+	int deleteByPrimaryKey(Integer itemid);
 
-    int insert(TbOrderitem record);
+	int insert(TbOrderitem record);
 
-    int insertSelective(TbOrderitem record);
+	int insertSelective(TbOrderitem record);
 
-    List<TbOrderitem> selectByExample(TbOrderitemExample example);
+	List<TbOrderitem> selectByExample(TbOrderitemExample example);
 
-    TbOrderitem selectByPrimaryKey(Integer itemid);
+	List<TbOrderitem> findByOid(Integer oid);
 
-    int updateByExampleSelective(@Param("record") TbOrderitem record, @Param("example") TbOrderitemExample example);
+	TbOrderitem selectByPrimaryKey(Integer itemid);
 
-    int updateByExample(@Param("record") TbOrderitem record, @Param("example") TbOrderitemExample example);
+	int updateByExampleSelective(@Param("record") TbOrderitem record, @Param("example") TbOrderitemExample example);
 
-    int updateByPrimaryKeySelective(TbOrderitem record);
+	int updateByExample(@Param("record") TbOrderitem record, @Param("example") TbOrderitemExample example);
 
-    int updateByPrimaryKey(TbOrderitem record);
+	int updateByPrimaryKeySelective(TbOrderitem record);
+
+	int updateByPrimaryKey(TbOrderitem record);
 }

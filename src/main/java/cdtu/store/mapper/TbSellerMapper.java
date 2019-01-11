@@ -11,7 +11,7 @@ public interface TbSellerMapper {
     int deleteByExample(TbSellerExample example);
 
     int deleteByPrimaryKey(Integer sid);
-
+    
     int insert(TbSeller record);
 
     int insertSelective(TbSeller record);

@@ -57,5 +57,7 @@ public interface OrderitemService {
 	 * @return
 	 */
 	public PageResult findPage(TbOrderitem orderitem, int pageNum,int pageSize);
+
+	public List<TbOrderitem> findByOid(Integer oid);
 	
 }
