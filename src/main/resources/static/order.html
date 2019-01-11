@@ -48,7 +48,7 @@ a:hover {
 					<li role="presentation"><a role="menuitem" tabindex="-1"
 						href="#">小米账户</a></li>
 					<li role="presentation"><a role="menuitem" tabindex="-1"
-						href="#" v-on:click="logout()">退出登录</a></li>
+						href="" v-on:click="logout()">退出登录</a></li>
 				</ul>
 				<button type="button"
 					onclick="javascrtpt:window.location.href='shopcart.html'"
@@ -103,7 +103,7 @@ a:hover {
 							<th><p style="color: #808080; text-align: right;">订单金额:</p></th>
 							<th width="50px;"><p style="color: #000;">{{order.totalprice}}&nbsp;&nbsp;元</p></th>
 							<th><p style="color: #808080; text-align: right;">
-									<button data-toggle="modal" data-target="#detail"
+									<button data-toggle="modal" data-target="#detail" v-on:click="findByOid(order.oid)"
 										class="btn btn-primary">详情</button>
 								</p></th>
 							<th width="1px;"></th>
@@ -152,8 +152,6 @@ a:hover {
 							<div class="modal-footer">
 								<button type="button" class="btn btn-danger"
 									data-dismiss="modal">取消</button>
-								<button type="button" v-on:click="update()"
-									class="btn btn-primary">发货</button>
 							</div>
 						</div>
 					</div>

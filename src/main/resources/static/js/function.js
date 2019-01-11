@@ -153,7 +153,7 @@ var personInfo = new Vue({
 	},
 	methods:{
 		findOne:function(){
-			this.$http.get('/customer/findOne?id=1').then(function(res){
+			this.$http.get('/customer/findOne?id=2').then(function(res){
 				this.customer=res.body
 			},function(){
 				console.log('请求失败处理');
