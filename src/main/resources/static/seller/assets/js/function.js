@@ -200,12 +200,19 @@ var productManage = new Vue({
 		},
 		del : function(product) {
 			this.product = product
-			this.$http.post('/product/delete?id=' + this.product.pid).then(
-					function(res) {
-						this.products = res.body
-					}, function() {
-						console.log('请求失败处理');
-					});
+			var ids = [];
+			ids = this.product.pid;
+			this.$http.post('/product/delete?ids=' +ids).then(function(res) {
+				if(res.body.success){
+					alert("删除成功！")
+					location.href="productManage.html"
+				}else{
+					alert("删除失败！")
+					location.href="productManage.html"
+				}
+			}, function() {
+				console.log('请求失败处理');
+			});
 		},
 		findBySid : function() {
 			this.$http.get('/product/findBySid?sid=1').then(function(res) {
